@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --blue: #1e90ff;
+    --white: #fff;
+}
+
+/*Reset CSS*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*Default body settings*/
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Inter, sans-serif;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: var(--blue);
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.index-container {
+    width: 60%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+input[type=text] {
+    height: 40px;
+    margin: 10px;
+    width: 250px;
+    outline: 0;
+    border-width: 0 0 2px;
+    font-size: 22px;
+    color: var(--blue);
+}
+
+input[type=submit] {
+    height: 60px;
+    margin: 15px;
+    width: 250px;
+    font-size: 22px;
+    text-align: center;
+    color: var(--blue);
+    background-color: var(--white);
+    border-radius: 5px;
+}
+
+input[type=submit]:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
