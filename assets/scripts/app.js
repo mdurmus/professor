@@ -1,27 +1,23 @@
 
 /**
- * A method for storing user information in cookies.
+ * A method for storing user information in SessionStorage.
  */
-function CreateCookie() {
-    let userName = document.getElementById('fname').value;
-    let email = document.getElementById('email').value;
-    document.cookie = `name=${userName}; email=${email}`;
-    window.location.replace("game.html");
-    return false;
-}
+document.getElementById('login-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var name = document.getElementById('fname').value;
+    var mail = document.getElementById('email').value;
+    var personData = { fname: name, email: mail };
+    sessionStorage.setItem('userInfo', JSON.stringify(personData));
+    window.location.href = 'game.html';
+})
 
-function CookieRead() {
-    let allCookie = document.cookie;
-    // I wantto check cooike objects
-    if (allCookie.trim() !== "") {
-        let cookieValues = allCookie.split(';');
-        let nameData = cookieValues[0].split('=');
-        let mailData = cookieValues[1].split('=');
-
-        let name = nameData[1].trim();
-        let email = mailData[1].trim();
-
-        console.log(name + ' ' + email);
+function ReadSessionData() {
+    let storedData = sessionStorage.getItem('userInfo');
+    if (storedData) {
+        let user = JSON.parse(storedData);
+        console.log(user.fname);
+        console.log(user.email);
+    } else {
+        console.log('No any record on session storage');
     }
-
 }
