@@ -21,6 +21,12 @@ body {
     flex-direction: column;
 }
 
+
+
+main {
+    flex: 1 0 auto;
+}
+
 header {
     display: flex;
     flex-direction: row;
@@ -33,10 +39,17 @@ header {
 
 }
 
-main {
-    flex: 1 0 auto;
-}
-
 header i {
     font-size: 1.4rem;
+}
+
+.category-timer {
+    font-size: 300;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--blue);
 }
