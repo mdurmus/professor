@@ -1,6 +1,6 @@
 
 /**
- * A method for storing user information in SessionStorage.
+ * A method for storing user information in SessionStorage as JSON data.
  */
 document.getElementById('login-form').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -11,6 +11,10 @@ document.getElementById('login-form').addEventListener('submit', function (event
     window.location.href = 'game.html';
 })
 
+
+/**
+ * Read user data from Session storage as JSON object.
+ */
 function ReadSessionData() {
     let storedData = sessionStorage.getItem('userInfo');
     if (storedData) {
