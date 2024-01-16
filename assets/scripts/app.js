@@ -13,3 +13,4 @@ function ReadSessionData() {
         console.log('No any record on session storage');
     }
 }
+
