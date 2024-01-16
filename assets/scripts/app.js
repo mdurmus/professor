@@ -29,3 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 })
 
+function Logout() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+}
