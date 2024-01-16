@@ -33,7 +33,16 @@
             </form>
         </div>
     </main>
-    <script src="assets/scripts/app.js"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var name = document.getElementById('fname').value;
+            var mail = document.getElementById('email').value;
+            var personData = { fname: name, email: mail };
+            sessionStorage.setItem('userInfo', JSON.stringify(personData));
+            window.location.href = 'game.html';
+        })
+    </script>
 </body>
 
 </html>

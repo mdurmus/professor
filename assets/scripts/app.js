@@ -2,14 +2,7 @@
 /**
  * A method for storing user information in SessionStorage as JSON data.
  */
-document.getElementById('login-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    var name = document.getElementById('fname').value;
-    var mail = document.getElementById('email').value;
-    var personData = { fname: name, email: mail };
-    sessionStorage.setItem('userInfo', JSON.stringify(personData));
-    window.location.href = 'game.html';
-})
+
 
 
 /**
@@ -19,6 +12,8 @@ function ReadSessionData() {
     let storedData = sessionStorage.getItem('userInfo');
     if (storedData) {
         let user = JSON.parse(storedData);
+        document.getElementById('uname').innerHTML = user.fname;
+        document.getElementById('mail').innerHTML = user.email;
         console.log(user.fname);
         console.log(user.email);
     } else {
