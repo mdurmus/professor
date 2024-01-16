@@ -15,6 +15,17 @@ function ReadSessionData() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    let soru = document.getElementById('question').innerHTML = "<p>Bu bir soru1</p>";
+    let number = document.getElementById('question-number').innerHTML = "<stronng>3/10</strong>";
+
+    let soru = document.getElementById('question').innerHTML = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie, lorem a ultricies varius, est dui elementum tortor, vel eleifend ligula tellus et risus. Nunc pellentesque odio augue, eu placerat eros pharetra id. Donec elementum eget dui id cursus. In hac habitasse platea dictumst. Cras ex turpis, hendrerit eget dolor non, feugiat pretium mi. Suspendisse potenti?</p>";
+
+    var answers = document.getElementById('anwers');
+
+    for (let index = 0; index < 4; index++) {
+        let button = document.createElement('button');
+        button.textContent = 'Answer ' + index;
+        button.classList.add('answer-button');
+        answers.appendChild(button);
+    }
 })
 
