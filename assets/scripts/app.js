@@ -14,3 +14,7 @@ function ReadSessionData() {
     }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    let soru = document.getElementById('question').innerHTML = "<p>Bu bir soru1</p>";
+})
+
