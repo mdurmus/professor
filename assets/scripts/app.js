@@ -1,10 +1,3 @@
-
-/**
- * A method for storing user information in SessionStorage as JSON data.
- */
-
-
-
 /**
  * Read user data from Session storage as JSON object.
  */
