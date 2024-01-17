@@ -1,18 +1,6 @@
-/**
- * Read user data from Session storage as JSON object.
- */
-function ReadSessionData() {
-    let storedData = sessionStorage.getItem('userInfo');
-    if (storedData) {
-        let user = JSON.parse(storedData);
-        document.getElementById('uname').innerHTML = user.fname;
-        document.getElementById('mail').innerHTML = user.email;
 
-        scores.push({ 'your-name': 0 })
-    } else {
-        console.log('No any record on session storage');
-    }
-}
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -32,11 +20,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 })
 
+/**
+ * Read user data from Session storage as JSON object.
+ */
+function ReadSessionData() {
+    let storedData = sessionStorage.getItem('userInfo');
+    if (storedData) {
+        let user = JSON.parse(storedData);
+        document.getElementById('uname').innerHTML = user.fname;
+        document.getElementById('mail').innerHTML = user.email;
+
+        scores.push({ 'your-name': 0 })
+    } else {
+        console.log('No any record on session storage');
+    }
+}
+
+
+/**Logout and clear session storage */
 function Logout() {
     sessionStorage.clear();
     window.location.href = "index.html";
 }
 
+/**
+ * Show/hide user panel
+ */
 function ShowUserPanel() {
     let userPanel = document.getElementById('user');
     if (userPanel.style.display === 'none') {
@@ -47,6 +56,9 @@ function ShowUserPanel() {
     }
 }
 
+/**
+ * Show/hide leader panel
+ */
 function ShowLeaderPanel() {
     let leaderPanel = document.getElementById('leader');
     if (leaderPanel.style.display === 'none') {
@@ -55,14 +67,20 @@ function ShowLeaderPanel() {
     } else {
         leaderPanel.style.display = 'none';
     }
-    WriteSores();
+    WriteLeaderboard();
 }
 
 let scores = [{ 'bykingpin': 100 }, { 'bykingpin': 90 }]
 
-function WriteSores() {
+/**
+ * Write leaderboard items on Leaderpanel.
+ */
+function WriteLeaderboard() {
+
     //Clear div content
     document.getElementById('leader').innerHTML = "";
+
+    //Create elment and set attribute for css class
     let scoreList = document.createElement('ol');
     scoreList.setAttribute('name', 'score-list')
 
