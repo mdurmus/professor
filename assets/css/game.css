@@ -71,16 +71,34 @@ header i {
     text-align: justify;
 }
 
+#answer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 #answers {
-    width: 90%;
-    margin: 20px 0px;
+
+    width: 100%;
 }
 
 .answer-button {
-    width: 90%;
-    margin: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 15px auto;
     padding: 5px;
 }
+
+
+
+
+
+
+
 
 #correct-answer,
 #incorrect-answer {
