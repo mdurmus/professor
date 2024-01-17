@@ -55,8 +55,6 @@ header i:hover {
 
 /* #region User panel */
 
-div#user-container {}
-
 div#user {
     display: none;
     position: fixed;
@@ -73,11 +71,29 @@ div#user p {
 div#user button {
     width: 250px;
     height: 35px;
-
 }
 
 div#user button:hover {
     cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region Leaderboard */
+div#leader {
+    display: none;
+    position: fixed;
+    width: 100%;
+    padding: 25px 50px;
+    background-color: var(--blue);
+}
+
+
+[name|="score-list"] {
+    color: gold;
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 24px;
 }
 
 /* #endregion */
