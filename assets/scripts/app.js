@@ -53,6 +53,8 @@ function ShuffleQuestion(questions) {
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    StartQuiz();
+
     var answers = document.getElementById('answers');
 
     for (let index = 0; index < 4; index++) {
