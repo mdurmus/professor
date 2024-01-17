@@ -75,3 +75,348 @@ function WriteSores() {
     }
     document.getElementById('leader').appendChild(scoreList);
 }
+
+
+// #region Questions //
+let questionBank = [
+    {
+        question: "Which planet is known as the 'Gas Giant'?",
+        category: "Astronomy",
+        answers: [
+            { text: "Mars", correct: false },
+            { text: "Venus", correct: false },
+            { text: "Jupiter", correct: true },
+            { text: "Saturn", correct: false }
+        ],
+        explanation: "Jupiter is known as the 'Gas Giant'.",
+        imageUrl: "jupiter_gas_giant.jpg"
+    },
+    {
+        question: "Who wrote the novel 'To Kill a Mockingbird'?",
+        category: "Literature",
+        answers: [
+            { text: "Harper Lee", correct: true },
+            { text: "J.K. Rowling", correct: false },
+            { text: "Ernest Hemingway", correct: false },
+            { text: "George Orwell", correct: false }
+        ],
+        explanation: "'To Kill a Mockingbird' was written by Harper Lee.",
+        imageUrl: "to_kill_a_mockingbird.jpg"
+    },
+    {
+        question: "Which river is the longest in the world?",
+        category: "Geography",
+        answers: [
+            { text: "Nile", correct: false },
+            { text: "Amazon", correct: true },
+            { text: "Yangtze", correct: false },
+            { text: "Mississippi", correct: false }
+        ],
+        explanation: "The Amazon River is the longest river in the world.",
+        imageUrl: "amazon_river.jpg"
+    },
+    {
+        question: "Who discovered penicillin?",
+        category: "Science",
+        answers: [
+            { text: "Marie Curie", correct: false },
+            { text: "Alexander Fleming", correct: true },
+            { text: "Louis Pasteur", correct: false },
+            { text: "Isaac Newton", correct: false }
+        ],
+        explanation: "Penicillin was discovered by Alexander Fleming.",
+        imageUrl: "penicillin_discovery.jpg"
+    },
+    {
+        question: "What is the capital of Australia?",
+        category: "Geography",
+        answers: [
+            { text: "Sydney", correct: false },
+            { text: "Melbourne", correct: false },
+            { text: "Canberra", correct: true },
+            { text: "Perth", correct: false }
+        ],
+        explanation: "Canberra is the capital of Australia.",
+        imageUrl: "canberra_australia.jpg"
+    },
+    {
+        question: "Which element has the chemical symbol 'K'?",
+        category: "Chemistry",
+        answers: [
+            { text: "Potassium", correct: true },
+            { text: "Krypton", correct: false },
+            { text: "Kryptonite", correct: false },
+            { text: "Keratin", correct: false }
+        ],
+        explanation: "The chemical symbol 'K' represents Potassium.",
+        imageUrl: "potassium_element.jpg"
+    },
+    {
+        question: "Who painted the famous artwork 'The Scream'?",
+        category: "Art",
+        answers: [
+            { text: "Vincent van Gogh", correct: false },
+            { text: "Edvard Munch", correct: true },
+            { text: "Pablo Picasso", correct: false },
+            { text: "Claude Monet", correct: false }
+        ],
+        explanation: "'The Scream' was painted by Edvard Munch.",
+        imageUrl: "the_scream_munch.jpg"
+    },
+    {
+        question: "What is the name of the largest crater on the surface of the Moon?",
+        category: "Astronomy",
+        answers: [
+            { text: "Tycho", correct: true },
+            { text: "Copernicus", correct: false },
+            { text: "Kepler", correct: false },
+            { text: "Aristarchus", correct: false }
+        ],
+        explanation: "Tycho is the largest crater on the surface of the Moon."
+    },
+    {
+        question: "Which is the largest ocean on Earth?",
+        category: "Geography",
+        answers: [
+            { text: "Indian", correct: false },
+            { text: "Atlantic", correct: false },
+            { text: "Pacific", correct: true },
+            { text: "Arctic", correct: false }
+        ],
+        explanation: "The Pacific Ocean is the largest ocean on Earth."
+    },
+    {
+        question: "In which museum is Leonardo da Vinci's famous painting 'Mona Lisa' displayed?",
+        category: "Art",
+        answers: [
+            { text: "Louvre Museum", correct: true },
+            { text: "British Museum", correct: false },
+            { text: "Uffizi Gallery", correct: false },
+            { text: "Prado Museum", correct: false }
+        ],
+        explanation: "The 'Mona Lisa' is displayed at the Louvre Museum."
+    },
+    {
+        question: "Which planet is known as the 'Red Planet'?",
+        category: "Astronomy",
+        answers: [
+            { text: "Venus", correct: false },
+            { text: "Mars", correct: true },
+            { text: "Jupiter", correct: false },
+            { text: "Saturn", correct: false }
+        ],
+        explanation: "Mars is known as the 'Red Planet'."
+    },
+    {
+        question: "What is the capital of the country where Buenos Aires is located?",
+        category: "Geography",
+        answers: [
+            { text: "Brazil", correct: false },
+            { text: "Argentina", correct: true },
+            { text: "Chile", correct: false },
+            { text: "Colombia", correct: false }
+        ],
+        explanation: "Buenos Aires is the capital of Argentina."
+    },
+    {
+        question: "What is the largest organ in the human body?",
+        category: "Biology",
+        answers: [
+            { text: "Heart", correct: false },
+            { text: "Brain", correct: false },
+            { text: "Lung", correct: false },
+            { text: "Skin", correct: true }
+        ],
+        explanation: "The skin is the largest organ in the human body."
+    },
+    {
+        question: "In which year did the United States declare its independence?",
+        category: "History",
+        answers: [
+            { text: "1776", correct: true },
+            { text: "1789", correct: false },
+            { text: "1804", correct: false },
+            { text: "1812", correct: false }
+        ],
+        explanation: "The United States declared its independence in 1776."
+    },
+    {
+        question: "Which planet is known as the 'Morning Star' or 'Evening Star'?",
+        category: "Astronomy",
+        answers: [
+            { text: "Mars", correct: false },
+            { text: "Venus", correct: true },
+            { text: "Jupiter", correct: false },
+            { text: "Mercury", correct: false }
+        ],
+        explanation: "Venus is known as the 'Morning Star' or 'Evening Star'."
+    },
+    {
+        question: "What is the symbol for the element with the symbol 'Fe'?",
+        category: "Chemistry",
+        answers: [
+            { text: "Phosphorus", correct: false },
+            { text: "Iron", correct: true },
+            { text: "Fluorine", correct: false },
+            { text: "Francium", correct: false }
+        ],
+        explanation: "'Fe' symbolizes the element Iron."
+    },
+    {
+        question: "Which book was written by George Orwell?",
+        category: "Literature",
+        answers: [
+            { text: "1984", correct: true },
+            { text: "Fahrenheit 451", correct: false },
+            { text: "Animal Farm", correct: false },
+            { text: "Brave New World", correct: false }
+        ],
+        explanation: "The book written by George Orwell is '1984'."
+    },
+    {
+        question: "Which planet holds the title of the largest planet in the 'Solar System'?",
+        category: "Astronomy",
+        answers: [
+            { text: "Mars", correct: false },
+            { text: "Jupiter", correct: true },
+            { text: "Saturn", correct: false },
+            { text: "Uranus", correct: false }
+        ],
+        explanation: "Jupiter holds the title of the largest planet in the Solar System."
+    },
+    {
+        question: "Who is the author of the book 'Romeo and Juliet'?",
+        category: "Literature",
+        answers: [
+            { text: "Charles Dickens", correct: false },
+            { text: "William Shakespeare", correct: true },
+            { text: "Jane Austen", correct: false },
+            { text: "Emily Brontë", correct: false }
+        ],
+        explanation: "'Romeo and Juliet' was written by William Shakespeare."
+    },
+    {
+        question: "Which country hosted the 2016 Summer Olympics?",
+        category: "Sports",
+        answers: [
+            { text: "Brazil", correct: true },
+            { text: "Russia", correct: false },
+            { text: "China", correct: false },
+            { text: "United States", correct: false }
+        ],
+        explanation: "The 2016 Summer Olympics were hosted by Brazil."
+    },
+    {
+        question: "What is the capital of Japan?",
+        category: "Geography",
+        answers: [
+            { text: "Seoul", correct: false },
+            { text: "Beijing", correct: false },
+            { text: "Tokyo", correct: true },
+            { text: "Bangkok", correct: false }
+        ],
+        explanation: "Tokyo is the capital of Japan."
+    },
+    {
+        question: "Who painted the famous artwork 'Starry Night'?",
+        category: "Art",
+        answers: [
+            { text: "Pablo Picasso", correct: false },
+            { text: "Vincent van Gogh", correct: true },
+            { text: "Leonardo da Vinci", correct: false },
+            { text: "Claude Monet", correct: false }
+        ],
+        explanation: "'Starry Night' was painted by Vincent van Gogh."
+    },
+    {
+        question: "Which element is the most abundant in Earth's crust?",
+        category: "Geology",
+        answers: [
+            { text: "Iron", correct: false },
+            { text: "Silicon", correct: true },
+            { text: "Aluminum", correct: false },
+            { text: "Calcium", correct: false }
+        ],
+        explanation: "Silicon is the most abundant element in Earth's crust."
+    },
+    {
+        question: "Who is known as the 'Father of Modern Physics'?",
+        category: "Physics",
+        answers: [
+            { text: "Isaac Newton", correct: false },
+            { text: "Niels Bohr", correct: false },
+            { text: "Galileo Galilei", correct: false },
+            { text: "Albert Einstein", correct: true }
+        ],
+        explanation: "Albert Einstein is known as the 'Father of Modern Physics'."
+    },
+    {
+        question: "In which year did the Titanic sink?",
+        category: "History",
+        answers: [
+            { text: "1905", correct: false },
+            { text: "1912", correct: true },
+            { text: "1920", correct: false },
+            { text: "1931", correct: false }
+        ],
+        explanation: "The Titanic sank in the year 1912."
+    },
+    {
+        question: "Which planet is known as the 'Red Planet'?",
+        category: "Astronomy",
+        answers: [
+            { text: "Mars", correct: true },
+            { text: "Venus", correct: false },
+            { text: "Jupiter", correct: false },
+            { text: "Saturn", correct: false }
+        ],
+        explanation: "Mars is known as the 'Red Planet'."
+    },
+    {
+        question: "What is the largest mammal in the world?",
+        category: "Biology",
+        answers: [
+            { text: "Elephant", correct: false },
+            { text: "Blue Whale", correct: true },
+            { text: "Giraffe", correct: false },
+            { text: "Polar Bear", correct: false }
+        ],
+        explanation: "The Blue Whale is the largest mammal in the world.",
+    },
+    {
+        question: "Who wrote the play 'Romeo and Juliet'?",
+        category: "Literature",
+        answers: [
+            { text: "Charles Dickens", correct: false },
+            { text: "William Shakespeare", correct: true },
+            { text: "Jane Austen", correct: false },
+            { text: "Emily Brontë", correct: false }
+        ],
+        explanation: "'Romeo and Juliet' was written by William Shakespeare."
+    },
+    {
+        question: "What is the currency of Brazil?",
+        category: "Geography",
+        answers: [
+            { text: "Peso", correct: false },
+            { text: "Real", correct: true },
+            { text: "Dollar", correct: false },
+            { text: "Euro", correct: false }
+        ],
+        explanation: "The currency of Brazil is the Real."
+    },
+    {
+        question: "Who painted the 'Mona Lisa'?",
+        category: "Art",
+        answers: [
+            { text: "Vincent van Gogh", correct: false },
+            { text: "Leonardo da Vinci", correct: true },
+            { text: "Pablo Picasso", correct: false },
+            { text: "Claude Monet", correct: false }
+        ],
+        explanation: "The 'Mona Lisa' was painted by Leonardo da Vinci."
+    },
+    // Diğer sorular buraya eklenecek
+];
+
+// #endregion //
