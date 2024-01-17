@@ -1,14 +1,57 @@
+/**
+ * The method that starts the Quiz.
+ */
+function StartQuiz() {
+
+    ShowQuestion();
+}
+
+function ShowQuestion(counter = 0) {
+
+    let questions = GetQuestionsFromBank();
+    let question = questions[counter];
+    document.getElementById('category-name').innerHTML = question['category'];
+    document.getElementById('question').innerHTML = question['question'];
+    document.getElementById('question-number').innerHTML = counter + 1;
+
+}
 
 
 
+/**
+ * Getting mixed 10 question from QuestionBank.
+ * @returns Mixed 10 question array.
+ */
+function GetQuestionsFromBank() {
+
+    let selectedIndex = [];
+    let selectedQuestions = [];
+
+    while (selectedQuestions.length < 10) {
+        let randomIndex = Math.floor(Math.random() * questionBank.length);
+        if (!selectedIndex.includes(randomIndex)) {
+            selectedIndex.push(randomIndex);
+            selectedQuestions.push(questionBank[randomIndex]);
+        }
+    }
+    return selectedQuestions;
+}
+
+/**
+ * A method that mixes the questions with the Fisher-Yates algorithm.
+ */
+function ShuffleQuestion(questions) {
+    const shuffledArray = array.slice();
+
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = shuffledArray[i];
+        shuffledArray[i] = shuffledArray[j];
+        shuffledArray[j] = temp;
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
-
-
-
-    let number = document.getElementById('question-number').innerHTML = "<stronng>3/10</strong>";
-
-    let soru = document.getElementById('question').innerHTML = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie, lorem a ultricies varius, est dui elementum tortor, vel eleifend ligula tellus et risus. Nunc pellentesque odio augue, eu placerat eros pharetra id. Donec elementum eget dui id cursus. In hac habitasse platea dictumst. Cras ex turpis, hendrerit eget dolor non, feugiat pretium mi. Suspendisse potenti?</p>";
 
     var answers = document.getElementById('answers');
 
@@ -35,7 +78,6 @@ function ReadSessionData() {
         console.log('No any record on session storage');
     }
 }
-
 
 /**Logout and clear session storage */
 function Logout() {
@@ -70,7 +112,7 @@ function ShowLeaderPanel() {
     WriteLeaderboard();
 }
 
-let scores = [{ 'bykingpin': 100 }, { 'bykingpin': 90 }]
+
 
 /**
  * Write leaderboard items on Leaderpanel.
@@ -94,6 +136,7 @@ function WriteLeaderboard() {
     document.getElementById('leader').appendChild(scoreList);
 }
 
+let scores = [{ 'bykingpin': 100 }, { 'bykingpin': 90 }]
 
 // #region Questions //
 let questionBank = [
@@ -106,8 +149,7 @@ let questionBank = [
             { text: "Jupiter", correct: true },
             { text: "Saturn", correct: false }
         ],
-        explanation: "Jupiter is known as the 'Gas Giant'.",
-        imageUrl: "jupiter_gas_giant.jpg"
+        explanation: "Jupiter is known as the 'Gas Giant'."
     },
     {
         question: "Who wrote the novel 'To Kill a Mockingbird'?",
