@@ -31,7 +31,7 @@
 
     <header>
         <div>
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user" onclick="ShowUserPanel()"></i>
         </div>
 
         <h1>Professor</h1>
@@ -41,13 +41,26 @@
         </div>
     </header>
     <main>
+
+        <!--user panel-->
+        <div id="user-container">
+            <div id="user">
+                <p>Welcome: <span id="uname"></span> !</p>
+                <p>Your Email is: <span id="mail"></span></p>
+                <button id="logout" onclick="Logout()">Logout</button>
+            </div>
+        </div>
+        <!--End of user panel-->
+
+
+
+
         <section class="category-timer">
             <div id="category-name">Category Name</div>
             <div id="timer">XX:XX</div>
         </section>
 
         <section name="question-container">
-
             <div id="question"></div>
         </section>
 
@@ -57,12 +70,9 @@
 
 
         <br>
-        <button id="logout" style="width: 50%;color:red;margin: auto auto;" onclick="Logout()">Logout</button>
 
-        <div style="display: none;">
-            <p id="uname"></p>
-            <p id="mail"></p>
-        </div>
+
+
 
     </main>
     <footer>

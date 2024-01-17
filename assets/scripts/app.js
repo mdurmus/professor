@@ -33,3 +33,13 @@ function Logout() {
     sessionStorage.clear();
     window.location.href = "index.html";
 }
+
+function ShowUserPanel() {
+    let userPanel = document.getElementById('user');
+    if (userPanel.style.display === 'none') {
+        userPanel.style.display = 'block';
+        userPanel.style.zIndex = 10;
+    } else {
+        userPanel.style.display = 'none';
+    }
+}

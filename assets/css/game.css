@@ -25,6 +25,8 @@ main {
     flex: 1 0 auto;
 }
 
+
+/* #region Header */
 header,
 footer {
     display: flex;
@@ -40,8 +42,47 @@ footer {
 
 header i {
     font-size: 1.4rem;
+    border: 2px solid var(--blue);
+    padding: 5px;
 }
 
+header i:hover {
+    cursor: pointer;
+
+}
+
+/* #endregion */
+
+/* #region User panel */
+
+div#user-container {}
+
+div#user {
+    display: none;
+    position: fixed;
+    width: 100%;
+    padding: 25px 20px;
+    background-color: var(--blue);
+    color: white;
+}
+
+div#user p {
+    margin: 10px 0;
+}
+
+div#user button {
+    width: 250px;
+    height: 35px;
+
+}
+
+div#user button:hover {
+    cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region Category-Timer */
 .category-timer {
     font-size: 300;
     font-weight: bold;
@@ -53,6 +94,9 @@ header i {
     color: var(--blue);
 }
 
+/* #endregion */
+
+/* #region Question */
 #question-number {
     font-size: 1.6rem;
     font-weight: bold;
@@ -71,15 +115,16 @@ header i {
     text-align: justify;
 }
 
+/* #endregion */
+
+/* #region Answers */
 #answer-container {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 #answers {
-
     width: 100%;
 }
 
@@ -93,13 +138,9 @@ header i {
     padding: 5px;
 }
 
+/* #endregion */
 
-
-
-
-
-
-
+/* #region score */
 #correct-answer,
 #incorrect-answer {
     font-size: 1.6rem;
@@ -116,3 +157,5 @@ header i {
     color: red;
 
 }
+
+/* #endregion */
