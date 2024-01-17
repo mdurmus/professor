@@ -14,6 +14,15 @@ function ShowQuestion(counter = 0) {
     document.getElementById('question').innerHTML = question['question'];
     document.getElementById('question-number').innerHTML = counter + 1;
 
+    var answers = document.getElementById('answers');
+
+    for (let index = 0; index < question.answers.length; index++) {
+        let button = document.createElement('button');
+        button.textContent = question.answers[index].text;
+        button.classList.add('answer-button');
+        button.setAttribute('pic', question.answers[index].correct);
+        answers.appendChild(button);
+    }
 }
 
 
@@ -55,14 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     StartQuiz();
 
-    var answers = document.getElementById('answers');
 
-    for (let index = 0; index < 4; index++) {
-        let button = document.createElement('button');
-        button.textContent = 'Answer ' + index;
-        button.classList.add('answer-button');
-        answers.appendChild(button);
-    }
 })
 
 /**
