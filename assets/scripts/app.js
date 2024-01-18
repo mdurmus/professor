@@ -15,6 +15,7 @@ function ShowQuestion(counter = 0) {
     document.getElementById('question-number').innerHTML = counter + 1;
 
     var answers = document.getElementById('answers');
+    answers.innerHTML = '';
 
     for (let index = 0; index < question.answers.length; index++) {
         let button = document.createElement('button');
@@ -24,41 +25,73 @@ function ShowQuestion(counter = 0) {
         button.setAttribute('to', question.answers[index].correct);
         button.addEventListener('click', checkAnswer, false);
         answers.appendChild(button);
-
-
     }
 
 };
 
 function checkAnswer() {
+    let quizquestionNumber = parseInt(document.getElementById('question-number').innerHTML);
+    let questionNumber = this.getAttribute('qn');
     let result = this.getAttribute('to');
     if (result === 'false') {
         this.style.backgroundColor = 'red';
         DisableAllButtons();
-        ShowHint(this.getAttribute('qn'));
+        ShowHint(questionNumber);
         IncreaseIncorrectAnswer();
+        ShowCorrectAnswer();
+        setTimeout(ShowQuestion, 3000, quizquestionNumber);
+    } else {
+        DisableAllButtons();
+        ShowCorrectAnswer();
+        IncreaseCorrectAnswer();
+        setTimeout(ShowQuestion, 3000, quizquestionNumber);
     }
 }
 
+function IncreaseCorrectAnswer() {
+    let strnumber = document.getElementById('correct-answer').querySelector('span').innerText;
+    let intNumber = parseInt(strnumber);
+    document.getElementById('correct-answer').querySelector('span').innerText = intNumber + 1;
+}
+
+/**
+ * SHow corecct answer.
+ */
+function ShowCorrectAnswer() {
+    let correctAnswer = document.querySelector('.answer-button[to="true"]');
+    correctAnswer.style.backgroundColor = 'green';
+}
+
+/**
+ * The method that increases the number of wrong answers.
+ */
 function IncreaseIncorrectAnswer() {
     let stringNumber = document.getElementById('incorrect-answer').querySelector('span').innerText;
     let intNumber = parseInt(stringNumber);
     document.getElementById('incorrect-answer').querySelector('span').innerText = intNumber + 1;
-}
+};
 
+/**
+ * 
+ * @param {*} questionNumber 
+ * If the user has given an incorrect answer, a method that provides a clue to the correct answer.
+ */
 function ShowHint(questionNumber) {
     let answer = questionBank.find(p => p.id == questionNumber).explanation;
     document.getElementById('question').innerHTML += '<br><span style="background-color:orange">' + answer + '</span>';
 
-}
+};
 
+/**
+ * Locks all buttons after the answer is given.
+ */
 function DisableAllButtons() {
     let buttons = document.getElementById('answers').querySelectorAll('button');
     buttons.forEach(function (button) {
         button.disabled = true;
     });
 
-}
+};
 
 /**
  * Getting mixed 10 question from QuestionBank.
