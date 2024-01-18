@@ -45,7 +45,7 @@
         <!--user panel-->
         <div id="user-container">
             <div id="user">
-                <p>Welcome: <span id="uname"></span> !</p>
+                <p>Welcome: <span class="name"></span> !</p>
                 <p>Your Email is: <span id="mail"></span></p>
                 <button id="logout" onclick="Logout()">Logout</button>
             </div>
@@ -88,6 +88,19 @@
         <div id="incorrect-answer">
             <i class="fa-solid fa-face-frown"></i>
             <span>00</span>
+        </div>
+        <div id="result">
+            <h2>Scoreboard</h2>
+            <hr>
+            <p>Congratulations on finishing the game, <span class="name"></span> !</p>
+            <p>Your correct answer totaly: <span id="right"></span></p>
+            <p>Your incorrect answer: <span id="false"></span></p>
+            <hr>
+            <div id="game-review" class="game-buttons">
+                <button onclick="StartNewGame()">New Game</button>
+                <button onclick="ShowLeaderPanel()">Leaderboard</button>
+                <button onclick="Logout()">Logout</button>
+            </div>
         </div>
     </footer>
     <script src="assets/scripts/app.js"></script>

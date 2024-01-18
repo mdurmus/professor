@@ -175,3 +175,50 @@ div#leader {
 }
 
 /* #endregion */
+
+/* #region Result */
+#result {
+    display: none;
+    position: fixed;
+    left: 10%;
+    top: 35%;
+    width: 80%;
+    height: 350px;
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 1rem;
+
+}
+
+#result>p {
+    margin: 10px 0;
+
+}
+
+div.game-buttons {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: last baseline;
+    justify-content: space-around;
+    color: #1e90ff;
+
+}
+
+div.game-buttons>button {
+    width: 250px;
+    padding: 5px;
+    background-color: #f5f5f5;
+}
+
+div.game-buttons>button:hover {
+    width: 249px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #f00;
+    color: white;
+}
+
+/* #endregion */

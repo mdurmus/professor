@@ -1,18 +1,28 @@
+function StartNewGame() {
+    let win = document.getElementById('result');
+    win.style.display = 'none';
+    StartQuiz();
+}
+
+
 /**
  * The method that starts the Quiz.
  */
 function StartQuiz() {
 
+    GetQuestionsFromBank();
     ShowQuestion();
 };
 
+/**
+ * Print question and answer on screen.
+ * @param {*} counter 
+ */
 function ShowQuestion(counter = 0) {
-
-    let questions = GetQuestionsFromBank();
     let question = questions[counter];
     document.getElementById('category-name').innerHTML = question['category'];
     document.getElementById('question').innerHTML = question['question'];
-    document.getElementById('question-number').innerHTML = counter + 1;
+    document.getElementById('question-number').innerText = counter + 1;
 
     var answers = document.getElementById('answers');
     answers.innerHTML = '';
@@ -29,9 +39,13 @@ function ShowQuestion(counter = 0) {
 
 };
 
-function checkAnswer() {
-    let quizquestionNumber = parseInt(document.getElementById('question-number').innerHTML);
+/**
+ * A method of checking the correct answer. According to the results, it also performs the related skip operations and prints them on the screen. Restart new Game.
+ */
+function checkAnswer(event) {
+    let quizquestionNumber = parseInt(document.getElementById('question-number').innerText);
     let questionNumber = this.getAttribute('qn');
+    console.log(questionNumber);
     let result = this.getAttribute('to');
     if (result === 'false') {
         this.style.backgroundColor = 'red';
@@ -39,15 +53,53 @@ function checkAnswer() {
         ShowHint(questionNumber);
         IncreaseIncorrectAnswer();
         ShowCorrectAnswer();
-        setTimeout(ShowQuestion, 3000, quizquestionNumber);
+        let buttonsPassive = CheckAnswerButtonsBeforeFinish();
+        if (quizquestionNumber === 10 && buttonsPassive) {
+            GameScore();
+            event.preventDefault();
+        } else {
+            setTimeout(ShowQuestion, 3000, quizquestionNumber);
+        }
     } else {
         DisableAllButtons();
         ShowCorrectAnswer();
         IncreaseCorrectAnswer();
-        setTimeout(ShowQuestion, 3000, quizquestionNumber);
+        let buttonsPassive = CheckAnswerButtonsBeforeFinish();
+        if (quizquestionNumber === 10 && buttonsPassive) {
+            GameScore();
+            event.preventDefault();
+        } else {
+            setTimeout(ShowQuestion, 3000, quizquestionNumber);
+        }
     }
 }
 
+function CheckAnswerButtonsBeforeFinish() {
+    let buttons = document.getElementById('answers').getElementsByTagName('button');
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].disabled) {
+            return true;
+        }
+    }
+}
+
+
+/**
+ * Finish this session and showing score table.
+ */
+function GameScore() {
+
+    //I dont want to create variable because ecology is important :D 
+    document.getElementById('right').innerHTML = document.getElementById('correct-answer').querySelector('span').textContent;
+    document.getElementById('false').innerHTML = document.getElementById('incorrect-answer').querySelector('span').textContent;
+    let resultdiv = document.getElementById('result');
+    resultdiv.style.display = 'block';
+    questions = [];
+}
+
+/**
+ * The method that increases the correct answer score.
+ */
 function IncreaseCorrectAnswer() {
     let strnumber = document.getElementById('correct-answer').querySelector('span').innerText;
     let intNumber = parseInt(strnumber);
@@ -103,27 +155,13 @@ function GetQuestionsFromBank() {
     let selectedQuestions = [];
 
     while (selectedQuestions.length < 10) {
-        let randomIndex = Math.floor(Math.random() * questionBank.length);
+        let randomIndex = Math.floor(Math.random() * 30);
         if (!selectedIndex.includes(randomIndex)) {
             selectedIndex.push(randomIndex);
             selectedQuestions.push(questionBank[randomIndex]);
         }
     }
-    return selectedQuestions;
-};
-
-/**
- * A method that mixes the questions with the Fisher-Yates algorithm.
- */
-function ShuffleQuestion(questions) {
-    const shuffledArray = questions.slice();
-
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = shuffledArray[i];
-        shuffledArray[i] = shuffledArray[j];
-        shuffledArray[j] = temp;
-    }
+    questions = selectedQuestions;
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -137,7 +175,11 @@ function ReadSessionData() {
     let storedData = sessionStorage.getItem('userInfo');
     if (storedData) {
         let user = JSON.parse(storedData);
-        document.getElementById('uname').innerHTML = user.fname;
+        var allNameSpan = document.getElementsByClassName('name');
+        for (let index = 0; index < allNameSpan.length; index++) {
+            allNameSpan[index].innerHTML = user.fname;
+
+        }
         document.getElementById('mail').innerHTML = user.email;
 
         scores.push({ 'your-name': 0 })
@@ -202,6 +244,7 @@ function WriteLeaderboard() {
 };
 
 let scores = [{ 'bykingpin': 100 }, { 'bykingpin': 90 }];
+let questions = [];
 
 // #region Questions //
 let questionBank = [
@@ -569,3 +612,4 @@ let questionBank = [
 ];
 
 // #endregion //
+
