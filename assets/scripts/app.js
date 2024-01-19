@@ -3,7 +3,36 @@ function StartNewGame() {
     win.style.display = 'none';
     StartQuiz();
     ClearScores();
+
 }
+
+let countdown;
+
+function Countdown() {
+    clearInterval(countdown);
+    let questionNumber = parseInt(document.getElementById('question-number').innerText);
+    let second = 30;
+    let countdownerdiv = document.getElementById('timer');
+    countdown = setInterval(function () {
+        second -= 1;
+        countdownerdiv.innerHTML = second;
+        if (second <= 0) {
+            countdownerdiv.innerHTML = 'Time\'s Up!';
+            clearInterval(countdown);
+            DisableAllButtons();
+            IncreaseIncorrectAnswer();
+            ShowCorrectAnswer();
+            setTimeout(function () { ShowQuestion(questionNumber) }, 3000);
+        } else if (second < 10) {
+            countdownerdiv.style.color = 'red';
+        } else if (second < 20) {
+            countdownerdiv.style.color = 'orange';
+        } else if (second < 30) {
+            countdownerdiv.style.color = '#1e90ff';
+        }
+    }, 1000);
+}
+
 
 /***
  * Clear scores after finish game
@@ -31,6 +60,14 @@ function StartQuiz() {
  * @param {*} counter 
  */
 function ShowQuestion(counter = 0) {
+    if (counter === 10) {
+        Countdown();
+        clearInterval(countdown);
+    }
+    if (counter <= 10) {
+        Countdown();
+    }
+
     let question = questions[counter];
     document.getElementById('category-name').innerHTML = question['category'];
     document.getElementById('question').innerHTML = question['question'];
@@ -178,6 +215,7 @@ function GetQuestionsFromBank() {
 
 document.addEventListener("DOMContentLoaded", function () {
     StartQuiz();
+    Countdown();
 });
 
 let scores = [{ 'bykingpin': 100 }, { 'bykingpin': 90 }];
@@ -198,8 +236,8 @@ function ReadSessionData() {
         }
         document.getElementById('mail').innerHTML = user.email;
 
-        let newScore = { 'username': username, 'score': newScore };
-        scores.push(newScore);
+        // let newScore = { 'username': username, 'score': newScore };
+        // scores.push(newScore);
     } else {
         console.log('No any record on session storage');
     }
