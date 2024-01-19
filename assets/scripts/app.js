@@ -1,303 +1,6 @@
-function StartNewGame() {
-    let win = document.getElementById('result');
-    win.style.display = 'none';
-    StartQuiz();
-    ClearScores();
-
-}
-
 let countdown;
 
-function Countdown() {
-    clearInterval(countdown);
-    let questionNumber = parseInt(document.getElementById('question-number').innerText);
-    let second = 30;
-    let countdownerdiv = document.getElementById('timer');
-    countdown = setInterval(function () {
-        second -= 1;
-        countdownerdiv.innerHTML = second;
-        if (second <= 0) {
-            countdownerdiv.innerHTML = 'Time\'s Up!';
-            clearInterval(countdown);
-            DisableAllButtons();
-            IncreaseIncorrectAnswer();
-            ShowCorrectAnswer();
-            setTimeout(function () { ShowQuestion(questionNumber) }, 3000);
-        } else if (second < 10) {
-            countdownerdiv.style.color = 'red';
-        } else if (second < 20) {
-            countdownerdiv.style.color = 'orange';
-        } else if (second < 30) {
-            countdownerdiv.style.color = '#1e90ff';
-        }
-    }, 1000);
-}
-
-
-/***
- * Clear scores after finish game
- */
-function ClearScores() {
-    let correctAnswer = document.getElementById('correct-answer').getElementsByTagName('span')[0];
-    correctAnswer.innerText = '00';
-    let inCorrectAnswer = document.getElementById('incorrect-answer').getElementsByTagName('span')[0];
-    inCorrectAnswer.innerText = '00';
-
-}
-
-
-/**
- * The method that starts the Quiz.
- */
-function StartQuiz() {
-
-    GetQuestionsFromBank();
-    ShowQuestion();
-};
-
-/**
- * Print question and answer on screen.
- * @param {*} counter 
- */
-function ShowQuestion(counter = 0) {
-    if (counter === 10) {
-        Countdown();
-        clearInterval(countdown);
-    }
-    if (counter <= 10) {
-        Countdown();
-    }
-
-    let question = questions[counter];
-    document.getElementById('category-name').innerHTML = question['category'];
-    document.getElementById('question').innerHTML = question['question'];
-    document.getElementById('question-number').innerText = counter + 1;
-
-    var answers = document.getElementById('answers');
-    answers.innerHTML = '';
-
-    for (let index = 0; index < question.answers.length; index++) {
-        let button = document.createElement('button');
-        button.textContent = question.answers[index].text;
-        button.classList.add('answer-button');
-        button.setAttribute('qn', question.id);
-        button.setAttribute('to', question.answers[index].correct);
-        button.addEventListener('click', checkAnswer, false);
-        answers.appendChild(button);
-    }
-
-};
-
-/**
- * A method of checking the correct answer. According to the results, it also performs the related skip operations and prints them on the screen. Restart new Game.
- */
-function checkAnswer(event) {
-    let quizquestionNumber = parseInt(document.getElementById('question-number').innerText);
-    let questionNumber = this.getAttribute('qn');
-    console.log(questionNumber);
-    let result = this.getAttribute('to');
-    if (result === 'false') {
-        this.style.backgroundColor = 'red';
-        DisableAllButtons();
-        ShowHint(questionNumber);
-        IncreaseIncorrectAnswer();
-        ShowCorrectAnswer();
-        let buttonsPassive = CheckAnswerButtonsBeforeFinish();
-        if (quizquestionNumber === 10 && buttonsPassive) {
-            GameScore();
-            event.preventDefault();
-        } else {
-            setTimeout(ShowQuestion, 3000, quizquestionNumber);
-        }
-    } else {
-        DisableAllButtons();
-        ShowCorrectAnswer();
-        IncreaseCorrectAnswer();
-        let buttonsPassive = CheckAnswerButtonsBeforeFinish();
-        if (quizquestionNumber === 10 && buttonsPassive) {
-            GameScore();
-            event.preventDefault();
-        } else {
-            setTimeout(ShowQuestion, 3000, quizquestionNumber);
-        }
-    }
-}
-
-function CheckAnswerButtonsBeforeFinish() {
-    let buttons = document.getElementById('answers').getElementsByTagName('button');
-    for (let i = 0; i < buttons.length; i++) {
-        if (buttons[i].disabled) {
-            return true;
-        }
-    }
-}
-
-
-/**
- * Finish this session and showing score table.
- */
-function GameScore() {
-
-    //I dont want to create variable because ecology is important :D 
-    document.getElementById('right').innerHTML = document.getElementById('correct-answer').querySelector('span').textContent;
-    document.getElementById('false').innerHTML = document.getElementById('incorrect-answer').querySelector('span').textContent;
-    let resultdiv = document.getElementById('result');
-    resultdiv.style.display = 'block';
-    questions = [];
-}
-
-/**
- * The method that increases the correct answer score.
- */
-function IncreaseCorrectAnswer() {
-    let strnumber = document.getElementById('correct-answer').querySelector('span').innerText;
-    let intNumber = parseInt(strnumber);
-    document.getElementById('correct-answer').querySelector('span').innerText = intNumber + 1;
-}
-
-/**
- * SHow corecct answer.
- */
-function ShowCorrectAnswer() {
-    let correctAnswer = document.querySelector('.answer-button[to="true"]');
-    correctAnswer.style.backgroundColor = 'green';
-}
-
-/**
- * The method that increases the number of wrong answers.
- */
-function IncreaseIncorrectAnswer() {
-    let stringNumber = document.getElementById('incorrect-answer').querySelector('span').innerText;
-    let intNumber = parseInt(stringNumber);
-    document.getElementById('incorrect-answer').querySelector('span').innerText = intNumber + 1;
-};
-
-/**
- * 
- * @param {*} questionNumber 
- * If the user has given an incorrect answer, a method that provides a clue to the correct answer.
- */
-function ShowHint(questionNumber) {
-    let answer = questionBank.find(p => p.id == questionNumber).explanation;
-    document.getElementById('question').innerHTML += '<br><span style="background-color:orange">' + answer + '</span>';
-
-};
-
-/**
- * Locks all buttons after the answer is given.
- */
-function DisableAllButtons() {
-    let buttons = document.getElementById('answers').querySelectorAll('button');
-    buttons.forEach(function (button) {
-        button.disabled = true;
-    });
-
-};
-
-/**
- * Getting mixed 10 question from QuestionBank.
- * @returns Mixed 10 question array.
- */
-function GetQuestionsFromBank() {
-
-    let selectedIndex = [];
-    let selectedQuestions = [];
-
-    while (selectedQuestions.length < 10) {
-        let randomIndex = Math.floor(Math.random() * 30);
-        if (!selectedIndex.includes(randomIndex)) {
-            selectedIndex.push(randomIndex);
-            selectedQuestions.push(questionBank[randomIndex]);
-        }
-    }
-    questions = selectedQuestions;
-};
-
-document.addEventListener("DOMContentLoaded", function () {
-    StartQuiz();
-    Countdown();
-});
-
 let scores = [{ 'bykingpin': 100 }, { 'bykingpin': 90 }];
-
-
-/**
- * Read user data from Session storage as JSON object.
- */
-function ReadSessionData() {
-    let storedData = sessionStorage.getItem('userInfo');
-    if (storedData) {
-        let user = JSON.parse(storedData);
-        let username = user.fname;
-        var allNameSpan = document.getElementsByClassName('name');
-        for (let index = 0; index < allNameSpan.length; index++) {
-            allNameSpan[index].innerHTML = user.fname;
-
-        }
-        document.getElementById('mail').innerHTML = user.email;
-
-        // let newScore = { 'username': username, 'score': newScore };
-        // scores.push(newScore);
-    } else {
-        console.log('No any record on session storage');
-    }
-};
-
-/**Logout and clear session storage */
-function Logout() {
-    sessionStorage.clear();
-    window.location.href = "index.html";
-};
-
-/**
- * Show/hide user panel
- */
-function ShowUserPanel() {
-    let userPanel = document.getElementById('user');
-    if (userPanel.style.display === 'none') {
-        userPanel.style.display = 'block';
-        userPanel.style.zIndex = 10;
-    } else {
-        userPanel.style.display = 'none';
-    }
-};
-
-/**
- * Show/hide leader panel
- */
-function ShowLeaderPanel() {
-    let leaderPanel = document.getElementById('leader');
-    if (leaderPanel.style.display === 'none') {
-        leaderPanel.style.display = 'block';
-        leaderPanel.style.zIndex = 11;
-    } else {
-        leaderPanel.style.display = 'none';
-    }
-    WriteLeaderboard();
-};
-
-/**
- * Write leaderboard items on Leaderpanel.
- */
-function WriteLeaderboard() {
-
-    //Clear div content
-    document.getElementById('leader').innerHTML = "";
-
-    //Create elment and set attribute for css class
-    let scoreList = document.createElement('ol');
-    scoreList.setAttribute('name', 'score-list')
-
-    for (let i = 0; i < scores.length; i++) {
-        let listItem = document.createElement('li');
-        let player = Object.keys(scores[i])[0];
-        let score = scores[i][player];
-        listItem.innerHTML = player + ' > ' + score;
-        scoreList.appendChild(listItem);
-    }
-    document.getElementById('leader').appendChild(scoreList);
-};
-
 
 let questions = [];
 
@@ -668,3 +371,390 @@ let questionBank = [
 
 // #endregion //
 
+/**
+ * The method that starts the Quiz.
+ */
+function StartQuiz() {
+    questions = [];
+    GetQuestionsFromBank();
+    ShowQuestion();
+};
+
+
+
+/**
+ * Print question and answer on screen.
+ * @param {*} counter 
+ */
+function ShowQuestion(questionIndexNumber = 0) {
+    if (questionIndexNumber === 10) {
+        //Countdown();
+        //clearInterval(countdown);
+    }
+    if (questionIndexNumber < 10) {
+        //Countdown();
+        //Get question from Array.
+        let question = questions[questionIndexNumber];
+
+        //Write category name
+        document.getElementById('category-name').innerHTML = question['category'];
+
+        //Write question
+        document.getElementById('question').innerHTML = question['question'];
+
+        //Sonraki sorunun numarasini yaziyorum
+        //Sorunun numarasi indexin bir büyügü oluyor.
+        document.getElementById('question-number').innerText = questionIndexNumber + 1;
+
+        //Cevaplar butonunun oldugu yerler.
+        var answers = document.getElementById('answers');
+        answers.innerHTML = '';
+
+        for (let index = 0; index < question.answers.length; index++) {
+            let button = document.createElement('button');
+            button.textContent = question.answers[index].text;
+            button.classList.add('answer-button');
+            button.setAttribute('qn', question.id);
+            button.setAttribute('to', question.answers[index].correct);
+            button.addEventListener('click', checkAnswer, false);
+            answers.appendChild(button);
+        }
+    }
+
+};
+
+/**
+ * Downtimer for answer check
+ */
+// function Countdown() {
+//     clearInterval(countdown);
+//     let questionNumber = parseInt(document.getElementById('question-number').innerText);
+//     let second = 30;
+//     let countdownerdiv = document.getElementById('timer');
+//     countdown = setInterval(function () {
+//         second -= 1;
+//         countdownerdiv.innerHTML = second;
+//         if (second <= 0) {
+//             countdownerdiv.innerHTML = 'Time\'s Up!';
+//             clearInterval(countdown);
+//             DisableAllButtons();
+//             IncreaseIncorrectAnswer();
+//             ShowCorrectAnswer();
+//             setTimeout(function () { ShowQuestion(questionNumber) }, 3000);
+//         } else if (second < 10) {
+//             countdownerdiv.style.color = 'red';
+//         } else if (second < 20) {
+//             countdownerdiv.style.color = 'orange';
+//         } else if (second < 30) {
+//             countdownerdiv.style.color = '#1e90ff';
+//         }
+//     }, 1000);
+// }
+
+
+
+/** OK 
+ * Clear scores
+ */
+function ClearScores() {
+    let correctAnswer = document.getElementById('correct-answer').getElementsByTagName('span')[0];
+    correctAnswer.innerText = '00';
+    let inCorrectAnswer = document.getElementById('incorrect-answer').getElementsByTagName('span')[0];
+    inCorrectAnswer.innerText = '00';
+
+}
+
+/**
+ * A method of checking the correct answer. According to the results, it also performs the related skip operations and prints them on the screen. Restart new Game.
+ */
+function checkAnswer(event) {
+    let quizquestionNumber = parseInt(document.getElementById('question-number').innerText);
+    let questionNumber = this.getAttribute('qn');
+    console.log(questionNumber);
+    let result = this.getAttribute('to');
+    if (result === 'false') {
+        this.style.backgroundColor = '#ffe8e7';
+        DisableAllButtons();
+        ShowHint(questionNumber);
+        IncreaseIncorrectAnswer();
+        ShowCorrectAnswer();
+        let buttonsPassive = CheckAnswerButtonsBeforeFinish();
+        if (quizquestionNumber === 10 && buttonsPassive) {
+            GameFinish();
+            event.preventDefault();
+        } else {
+            setTimeout(ShowQuestion, 3000, quizquestionNumber);
+        }
+    } else {
+        DisableAllButtons();
+        ShowCorrectAnswer();
+        IncreaseCorrectAnswer();
+        let buttonsPassive = CheckAnswerButtonsBeforeFinish();
+        if (quizquestionNumber === 10 && buttonsPassive) {
+            GameFinish();
+            event.preventDefault();
+        } else {
+            setTimeout(ShowQuestion, 3000, quizquestionNumber);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function CheckAnswerButtonsBeforeFinish() {
+    let buttons = document.getElementById('answers').getElementsByTagName('button');
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].disabled) {
+            return true;
+        }
+    }
+}
+
+
+/**
+ * Finish this session and showing score table.
+ */
+function GameFinish() {
+
+    let correctAnswer = document.getElementById('correct-answer').querySelector('span').textContent;
+    let inCorrectAnswer = document.getElementById('incorrect-answer').querySelector('span').textContent;
+
+    ClearItems();
+    //StopCoundown();
+    ShowResult(correctAnswer, inCorrectAnswer);
+}
+
+
+/**
+ * Oyun sonrasi ilgilialanlari temizleme
+ */
+function ClearItems() {
+    DisableAllButtons();
+    ClearQuestion();
+    ClearCategory();
+    ClearScores();
+}
+
+/**Show Game Result screen */
+/** Display the Game Result screen */
+/** Display the Game Result screen */
+function ShowResult(correctAnswer, incorrectAnswer) {
+    // Calculate and display the current score
+    let point = CalculatePoint(correctAnswer, incorrectAnswer);
+
+    let resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'block';
+
+    let tempPointElement = document.getElementById('temp-point');
+    let tempPoint = parseInt(tempPointElement.textContent) || 0; // Use 0 if parsing fails
+
+    tempPointElement.innerHTML = point;
+    tempPointElement.style.color = 'red';
+    tempPointElement.style.fontSize = '2rem';
+
+    document.getElementById('right').innerHTML = correctAnswer;
+    document.getElementById('false').innerHTML = incorrectAnswer;
+
+    let totalPoint = point + tempPoint;
+    document.getElementById('total-point').innerHTML = totalPoint;
+}
+// function ShowResult(correctAnswer, inCorrectAnswer) {
+//     //Adamin o anlik puanini ekrana bi yere yaz.
+//     let point = CalculatePoint(correctAnswer, inCorrectAnswer);
+
+//     let resultdiv = document.getElementById('result');
+//     resultdiv.style.display = 'block';
+
+//     let tempPoint = document.getElementById('temp-point');
+//     tempPoint.innerHTML = point;
+//     tempPoint.style.color = 'red';
+//     tempPoint.style.fontSize = '2rem';
+
+
+//     document.getElementById('right').innerHTML = correctAnswer;
+//     document.getElementById('false').innerHTML = inCorrectAnswer;
+
+//     let totalPoint = point + parseInt(tempPoint);
+//     document.getElementById('total-point').innerHTML = totalPoint;
+
+// }
+
+function CalculatePoint(correctAnswer, inCorrectAnswer) {
+    return (correctAnswer * 5) - inCorrectAnswer;
+}
+
+/** OK Clear category div */
+function ClearCategory() {
+    let category = document.getElementById('category-name');
+    category.innerHTML = '';
+}
+
+/** OK Clear question div */
+function ClearQuestion() {
+    let question = document.getElementById('question');
+    question.innerHTML = '';
+}
+
+
+/**
+ * OK The method that increases the correct answer score.
+ */
+function IncreaseCorrectAnswer() {
+    let strnumber = document.getElementById('correct-answer').querySelector('span').innerText;
+    let intNumber = parseInt(strnumber);
+    document.getElementById('correct-answer').querySelector('span').innerText = intNumber + 1;
+}
+
+/**
+ * SHow corecct answer.
+ */
+function ShowCorrectAnswer() {
+    let correctAnswer = document.querySelector('.answer-button[to="true"]');
+    correctAnswer.style.backgroundColor = '#e6ffe6';
+}
+
+/**
+ * The method that increases the number of wrong answers.
+ */
+function IncreaseIncorrectAnswer() {
+    let stringNumber = document.getElementById('incorrect-answer').querySelector('span').innerText;
+    let intNumber = parseInt(stringNumber);
+    document.getElementById('incorrect-answer').querySelector('span').innerText = intNumber + 1;
+};
+
+/**
+ * 
+ * @param {*} questionNumber 
+ * If the user has given an incorrect answer, a method that provides a clue to the correct answer.
+ */
+function ShowHint(questionNumber) {
+    let answer = questionBank.find(p => p.id == questionNumber).explanation;
+    document.getElementById('question').innerHTML += '<br><span style="background-color:orange">' + answer + '</span>';
+
+};
+
+/**OK 
+ * Locks all buttons after the answer is given.
+ */
+function DisableAllButtons() {
+    let buttons = document.getElementById('answers').querySelectorAll('button');
+    buttons.forEach(function (button) {
+        button.disabled = true;
+    });
+
+};
+
+/**
+ * Read user data from Session storage as JSON object.
+ */
+function ReadSessionData() {
+    let storedData = sessionStorage.getItem('userInfo');
+    if (storedData) {
+        let user = JSON.parse(storedData);
+        let username = user.fname;
+        var allNameSpan = document.getElementsByClassName('name');
+        for (let index = 0; index < allNameSpan.length; index++) {
+            allNameSpan[index].innerHTML = user.fname;
+
+        }
+        document.getElementById('mail').innerHTML = user.email;
+
+        // let newScore = { 'username': username, 'score': newScore };
+        // scores.push(newScore);
+    } else {
+        console.log('No any record on session storage');
+    }
+};
+
+/**OK Logout and clear session storage */
+function Logout() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+};
+
+/**
+ * Show/hide user panel
+ */
+function ShowUserPanel() {
+    let userPanel = document.getElementById('user');
+    if (userPanel.style.display === 'none') {
+        userPanel.style.display = 'block';
+        userPanel.style.zIndex = 10;
+    } else {
+        userPanel.style.display = 'none';
+    }
+};
+
+/**
+ * Show/hide leader panel
+ */
+function ShowLeaderPanel() {
+    let leaderPanel = document.getElementById('leader');
+    if (leaderPanel.style.display === 'none') {
+        leaderPanel.style.display = 'block';
+        leaderPanel.style.zIndex = 11;
+    } else {
+        leaderPanel.style.display = 'none';
+    }
+    WriteLeaderboard();
+};
+
+/**
+ * Write leaderboard items on Leaderpanel.
+ */
+function WriteLeaderboard() {
+
+    //Clear div content
+    document.getElementById('leader').innerHTML = "";
+
+    //Create elment and set attribute for css class
+    let scoreList = document.createElement('ol');
+    scoreList.setAttribute('name', 'score-list')
+
+    for (let i = 0; i < scores.length; i++) {
+        let listItem = document.createElement('li');
+        let player = Object.keys(scores[i])[0];
+        let score = scores[i][player];
+        listItem.innerHTML = player + ' > ' + score;
+        scoreList.appendChild(listItem);
+    }
+    document.getElementById('leader').appendChild(scoreList);
+};
+
+/** OK Begin of the game */
+function StartNewGame() {
+    //Hide result panel.
+    let win = document.getElementById('result');
+    win.style.display = 'none';
+    ClearScores();
+    StartQuiz();
+}
+
+/** OK
+ * Getting mixed 10 question from QuestionBank
+ * and push questions array.
+ * @returns Mixed 10 question array.
+ */
+function GetQuestionsFromBank() {
+
+    let selectedIndex = [];
+    let selectedQuestions = [];
+
+    while (selectedQuestions.length < 10) {
+        let randomIndex = Math.floor(Math.random() * 30);
+        if (!selectedIndex.includes(randomIndex)) {
+            selectedIndex.push(randomIndex);
+            selectedQuestions.push(questionBank[randomIndex]);
+        }
+    }
+    questions = selectedQuestions;
+};

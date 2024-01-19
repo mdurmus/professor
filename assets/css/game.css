@@ -191,9 +191,31 @@ div#leader {
 
 }
 
+#result-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+
+}
+
+#result-container div {
+    padding: 15px;
+    margin: 10px 15px;
+}
+
+#result-container p {
+
+    font-size: 1.6rem;
+}
+
+#result-container i {
+
+    margin: 0px 15px;
+}
+
 #result>p {
     margin: 10px 0;
-
 }
 
 div.game-buttons {
