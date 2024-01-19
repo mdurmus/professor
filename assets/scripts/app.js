@@ -670,6 +670,7 @@ function ReadSessionData() {
 
         // let newScore = { 'username': username, 'score': newScore };
         // scores.push(newScore);
+        StartNewGame();
     } else {
         console.log('No any record on session storage');
     }
