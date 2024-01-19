@@ -2,6 +2,18 @@ function StartNewGame() {
     let win = document.getElementById('result');
     win.style.display = 'none';
     StartQuiz();
+    ClearScores();
+}
+
+/***
+ * Clear scores after finish game
+ */
+function ClearScores() {
+    let correctAnswer = document.getElementById('correct-answer').getElementsByTagName('span')[0];
+    correctAnswer.innerText = '00';
+    let inCorrectAnswer = document.getElementById('incorrect-answer').getElementsByTagName('span')[0];
+    inCorrectAnswer.innerText = '00';
+
 }
 
 
@@ -168,6 +180,9 @@ document.addEventListener("DOMContentLoaded", function () {
     StartQuiz();
 });
 
+let scores = [{ 'bykingpin': 100 }, { 'bykingpin': 90 }];
+
+
 /**
  * Read user data from Session storage as JSON object.
  */
@@ -175,6 +190,7 @@ function ReadSessionData() {
     let storedData = sessionStorage.getItem('userInfo');
     if (storedData) {
         let user = JSON.parse(storedData);
+        let username = user.fname;
         var allNameSpan = document.getElementsByClassName('name');
         for (let index = 0; index < allNameSpan.length; index++) {
             allNameSpan[index].innerHTML = user.fname;
@@ -182,7 +198,8 @@ function ReadSessionData() {
         }
         document.getElementById('mail').innerHTML = user.email;
 
-        scores.push({ 'your-name': 0 })
+        let newScore = { 'username': username, 'score': newScore };
+        scores.push(newScore);
     } else {
         console.log('No any record on session storage');
     }
@@ -243,7 +260,7 @@ function WriteLeaderboard() {
     document.getElementById('leader').appendChild(scoreList);
 };
 
-let scores = [{ 'bykingpin': 100 }, { 'bykingpin': 90 }];
+
 let questions = [];
 
 // #region Questions //
