@@ -39,7 +39,8 @@ h1 {
     border-radius: 20px;
 }
 
-input[type=text] {
+input[type=text],
+input[type=email] {
     height: 40px;
     margin: 10px;
     width: 250px;

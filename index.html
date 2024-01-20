@@ -28,19 +28,20 @@
         <div class="index-container">
             <form id="login-form">
                 <input type="text" id="fname" name="fname" required placeholder="Name"><br>
-                <input type="text" id="email" name="email" placeholder="Email" required><br>
+                <input type="email" id="email" name="email" placeholder="Email" required><br>
                 <input type="submit" value="Start">
             </form>
         </div>
     </main>
     <script>
-        //This method for storing user data in Session storage with JSON object.
         document.getElementById('login-form').addEventListener('submit', function (event) {
             event.preventDefault();
             var name = document.getElementById('fname').value;
             var mail = document.getElementById('email').value;
-            var personData = { fname: name, email: mail };
-            sessionStorage.setItem('userInfo', JSON.stringify(personData));
+
+            //Store user infomation on session storage
+            sessionStorage.setItem('userName', name);
+            sessionStorage.setItem('eMail', mail);
             window.location.href = 'game.html';
         })
     </script>
