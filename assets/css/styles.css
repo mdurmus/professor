@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --blue: #1e90ff;
+    --blue: #1089ff;
+    --background: #e7e7e8;
     --white: #fff;
-    --background: #cdffcd;
 }
 
 /*Reset CSS*/
@@ -27,7 +27,7 @@ body {
 h1 {
     margin: 40px 0;
     color: var(--blue);
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 900;
 }
 
@@ -42,10 +42,14 @@ h1 {
     background-color: var(--background);
 }
 
+form {
+    text-align: center;
+}
+
 input[type=text],
 input[type=email] {
     height: 40px;
-    margin: 10px;
+    margin: 30px;
     width: 250px;
     outline: 0;
     border-width: 0 0 2px;
@@ -69,17 +73,24 @@ input[type=submit] {
     background-color: var(--white);
     border-radius: 5px;
     border-color: var(--blue);
-
 }
 
 input[type=submit]:hover {
     background-color: var(--blue);
-    color: var(--white);
+    color: #fff;
     border-color: var(--blue);
 }
 
 .index-container {
-    padding: 20px 20px;
-    background-color: var(--white);
+    padding: 40px 20px;
     border-radius: 10px;
+    background-color: #fff;
+}
+
+.index-container i {
+    display: flex;
+    justify-content: center;
+    font-size: 5rem;
+    text-align: center;
+    color: var(--blue);
 }

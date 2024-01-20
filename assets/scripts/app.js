@@ -381,7 +381,7 @@ function StartQuiz() {
     questions = [];
     GetQuestionsFromBank();
     ShowQuestion();
-};
+}
 /**
  * Print question and answer on screen.
  * @param {*} counter 
@@ -422,7 +422,7 @@ function ShowQuestion(questionIndexNumber = 0) {
         }
     }
 
-};
+}
 /**
  * Downtimer for answer check
  */
@@ -449,7 +449,6 @@ function Countdown(questionNumber) {
         }
     }, 1000);
 }
-
 /**
  * A method of checking the correct answer. According to the results, it also performs the related skip operations and prints them on the screen. Restart new Game.
  */
@@ -459,7 +458,8 @@ function checkAnswer(event) {
     console.log(questionNumber);
     let result = this.getAttribute('to');
     if (result === 'false') {
-        this.style.backgroundColor = '#ffe8e7';
+        this.style.backgroundColor = '#f00';
+        this.style.color = '#fff';
         DisableAllButtons();
         ShowHint(questionNumber);
         IncreaseIncorrectAnswer();
@@ -476,6 +476,8 @@ function checkAnswer(event) {
         DisableAllButtons();
         ShowCorrectAnswer();
         IncreaseCorrectAnswer();
+        this.style.backgroundColor = 'lightgreen';
+        this.style.color = 'black';
         let buttonsPassive = CheckAnswerButtonsBeforeFinish();
         if (quizquestionNumber === 10 && buttonsPassive) {
             GameFinish();
@@ -485,7 +487,7 @@ function checkAnswer(event) {
             setTimeout(ShowQuestion, 3000, quizquestionNumber);
         }
     }
-};
+}
 /**
  * Clear scores
  */
@@ -495,7 +497,7 @@ function ClearScores() {
     let inCorrectAnswer = document.getElementById('incorrect-answer').getElementsByTagName('span')[0];
     inCorrectAnswer.innerText = '00';
 
-};
+}
 function CheckAnswerButtonsBeforeFinish() {
     let buttons = document.getElementById('answers').getElementsByTagName('button');
     for (let i = 0; i < buttons.length; i++) {
@@ -503,7 +505,7 @@ function CheckAnswerButtonsBeforeFinish() {
             return true;
         }
     }
-};
+}
 /**
  * Finish this session and showing score table.
  */
@@ -511,11 +513,9 @@ function GameFinish() {
 
     let correctAnswer = document.getElementById('correct-answer').querySelector('span').textContent;
     let inCorrectAnswer = document.getElementById('incorrect-answer').querySelector('span').textContent;
-
     ClearItems();
-    //StopCoundown();
     ShowResult(correctAnswer, inCorrectAnswer);
-};
+}
 /** OK
  * Oyun sonrasi ilgilialanlari temizleme
  */
@@ -524,7 +524,7 @@ function ClearItems() {
     ClearQuestion();
     ClearCategory();
     ClearScores();
-};
+}
 /**
  * Show Game Result screen */
 function ShowResult(correctAnswer, incorrectAnswer) {
@@ -546,7 +546,7 @@ function ShowResult(correctAnswer, incorrectAnswer) {
 
     let totalPoint = point + tempPoint;
     document.getElementById('total-point').innerHTML = totalPoint;
-};
+}
 /**
  * Return total point 
  * @param {correctAnswer} correctAnswer 
@@ -561,13 +561,13 @@ function CalculatePoint(correctAnswer, inCorrectAnswer) {
 function ClearCategory() {
     let category = document.getElementById('category-name');
     category.innerHTML = '';
-};
+}
 /**
  * Clear question div */
 function ClearQuestion() {
     let question = document.getElementById('question');
     question.innerHTML = '';
-};
+}
 /**
  * OK The method that increases the correct answer score.
  */
@@ -575,14 +575,14 @@ function IncreaseCorrectAnswer() {
     let strnumber = document.getElementById('correct-answer').querySelector('span').innerText;
     let intNumber = parseInt(strnumber);
     document.getElementById('correct-answer').querySelector('span').innerText = intNumber + 1;
-};
+}
 /**
  * SHow corecct answer.
  */
 function ShowCorrectAnswer() {
     let correctAnswer = document.querySelector('.answer-button[to="true"]');
     correctAnswer.style.backgroundColor = '#e6ffe6';
-};
+}
 /**
  * The method that increases the number of wrong answers.
  */
@@ -590,7 +590,7 @@ function IncreaseIncorrectAnswer() {
     let stringNumber = document.getElementById('incorrect-answer').querySelector('span').innerText;
     let intNumber = parseInt(stringNumber);
     document.getElementById('incorrect-answer').querySelector('span').innerText = intNumber + 1;
-};
+}
 /**
  * 
  * @param {*} questionNumber 
@@ -600,7 +600,7 @@ function ShowHint(questionNumber) {
     let answer = questionBank.find(p => p.id == questionNumber).explanation;
     document.getElementById('question').innerHTML += '<br><span style="background-color:orange">' + answer + '</span>';
 
-};
+}
 /**OK 
  * Locks all buttons after the answer is given.
  */
@@ -610,7 +610,7 @@ function DisableAllButtons() {
         button.disabled = true;
     });
 
-};
+}
 /**
  * Read user data from Session storage as key/value object.
  */
@@ -630,13 +630,13 @@ function ReadSessionData() {
         players.push({ name: userName, score: userScore });
         StartNewGame();
     }
-};
+}
 /**
  * Logout and clear session storage */
 function Logout() {
     sessionStorage.clear();
     window.location.href = "index.html";
-};
+}
 /** OK Show/hide user panel
  */
 function ShowUserPanel() {
@@ -650,7 +650,7 @@ function ShowUserPanel() {
 /**OK Close User Panel */
 function CloseUserPanel() {
     document.getElementById('user-container').style.display = 'none';
-};
+}
 /**
  * Show/hide leader panel
  */
@@ -662,7 +662,7 @@ function ShowLeaderBoard() {
         leaderPanel.style.display = 'none';
     }
     WriteLeaderBoard();
-};
+}
 /**
  * Write leaderboard items on Leaderpanel.
  */
@@ -693,7 +693,7 @@ function WriteLeaderBoard() {
 
     // Sıralanmış oyuncuları konsola yazdır
     console.log(players);
-};
+}
 /**
  * Update user score on score list
  */
@@ -702,7 +702,7 @@ function UpdateUserScore() {
     let userIndex = players.findIndex(p => p.name === userName);
     let score = parseInt(document.getElementById('total-point').innerHTML);
     players[userIndex].score = score;
-};
+}
 /** */
 function ShowLeaderPanel() {
     let leaderPanel = document.getElementById('leader-container');
@@ -711,12 +711,12 @@ function ShowLeaderPanel() {
     } else {
         leaderPanel.style.display = 'none';
     }
-};
+}
 /** 
  * Close Leaderboard window */
 function CloseLeaderBoard() {
     document.getElementById('leader-container').style.display = 'none';
-};
+}
 /**
  *  Begin of the game */
 function StartNewGame() {
@@ -725,7 +725,7 @@ function StartNewGame() {
     win.style.display = 'none';
     ClearScores();
     StartQuiz();
-};
+}
 /** 
  * Getting mixed 10 question from QuestionBank
  * and push questions array.
@@ -744,4 +744,4 @@ function GetQuestionsFromBank() {
         }
     }
     questions = selectedQuestions;
-};
+}
