@@ -388,11 +388,12 @@ function StartQuiz() {
  */
 function ShowQuestion(questionIndexNumber = 0) {
     if (questionIndexNumber === 10) {
-        //Countdown();
-        //clearInterval(countdown);
+        Countdown(questionIndexNumber + 1);
+        clearInterval(countdown);
+        GameFinish();
     }
     if (questionIndexNumber < 10) {
-        //Countdown();
+        Countdown(questionIndexNumber + 1);
         //Get question from Array.
         let question = questions[questionIndexNumber];
 
@@ -425,40 +426,30 @@ function ShowQuestion(questionIndexNumber = 0) {
 /**
  * Downtimer for answer check
  */
-// function Countdown() {
-//     clearInterval(countdown);
-//     let questionNumber = parseInt(document.getElementById('question-number').innerText);
-//     let second = 30;
-//     let countdownerdiv = document.getElementById('timer');
-//     countdown = setInterval(function () {
-//         second -= 1;
-//         countdownerdiv.innerHTML = second;
-//         if (second <= 0) {
-//             countdownerdiv.innerHTML = 'Time\'s Up!';
-//             clearInterval(countdown);
-//             DisableAllButtons();
-//             IncreaseIncorrectAnswer();
-//             ShowCorrectAnswer();
-//             setTimeout(function () { ShowQuestion(questionNumber) }, 3000);
-//         } else if (second < 10) {
-//             countdownerdiv.style.color = 'red';
-//         } else if (second < 20) {
-//             countdownerdiv.style.color = 'orange';
-//         } else if (second < 30) {
-//             countdownerdiv.style.color = '#1e90ff';
-//         }
-//     }, 1000);
-// }
-/**
- * Clear scores
- */
-function ClearScores() {
-    let correctAnswer = document.getElementById('correct-answer').getElementsByTagName('span')[0];
-    correctAnswer.innerText = '00';
-    let inCorrectAnswer = document.getElementById('incorrect-answer').getElementsByTagName('span')[0];
-    inCorrectAnswer.innerText = '00';
+function Countdown(questionNumber) {
+    clearInterval(countdown);
+    let second = 30;
+    let countdownerdiv = document.getElementById('timer');
+    countdown = setInterval(function () {
+        second -= 1;
+        countdownerdiv.innerHTML = second;
+        if (second <= 0) {
+            countdownerdiv.innerHTML = 'Time\'s Up!';
+            clearInterval(countdown);
+            DisableAllButtons();
+            IncreaseIncorrectAnswer();
+            ShowCorrectAnswer();
+            setTimeout(function () { ShowQuestion(questionNumber) }, 3000);
+        } else if (second < 10) {
+            countdownerdiv.style.color = 'red';
+        } else if (second < 20) {
+            countdownerdiv.style.color = 'orange';
+        } else if (second < 30) {
+            countdownerdiv.style.color = '#1e90ff';
+        }
+    }, 1000);
+}
 
-};
 /**
  * A method of checking the correct answer. According to the results, it also performs the related skip operations and prints them on the screen. Restart new Game.
  */
@@ -476,6 +467,7 @@ function checkAnswer(event) {
         let buttonsPassive = CheckAnswerButtonsBeforeFinish();
         if (quizquestionNumber === 10 && buttonsPassive) {
             GameFinish();
+            clearInterval(countdown);
             event.preventDefault();
         } else {
             setTimeout(ShowQuestion, 3000, quizquestionNumber);
@@ -487,11 +479,22 @@ function checkAnswer(event) {
         let buttonsPassive = CheckAnswerButtonsBeforeFinish();
         if (quizquestionNumber === 10 && buttonsPassive) {
             GameFinish();
+            clearInterval(countdown);
             event.preventDefault();
         } else {
             setTimeout(ShowQuestion, 3000, quizquestionNumber);
         }
     }
+};
+/**
+ * Clear scores
+ */
+function ClearScores() {
+    let correctAnswer = document.getElementById('correct-answer').getElementsByTagName('span')[0];
+    correctAnswer.innerText = '00';
+    let inCorrectAnswer = document.getElementById('incorrect-answer').getElementsByTagName('span')[0];
+    inCorrectAnswer.innerText = '00';
+
 };
 function CheckAnswerButtonsBeforeFinish() {
     let buttons = document.getElementById('answers').getElementsByTagName('button');
@@ -708,8 +711,7 @@ function ShowLeaderPanel() {
     } else {
         leaderPanel.style.display = 'none';
     }
-}
-
+};
 /** 
  * Close Leaderboard window */
 function CloseLeaderBoard() {
