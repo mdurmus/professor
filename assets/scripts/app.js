@@ -682,37 +682,41 @@ function Logout() {
     window.location.href = "index.html";
 };
 
-/**
- * Show/hide user panel
+/** OK Show/hide user panel
  */
 function ShowUserPanel() {
-    let userPanel = document.getElementById('user');
+    let userPanel = document.getElementById('user-container');
     if (userPanel.style.display === 'none') {
         userPanel.style.display = 'block';
-        userPanel.style.zIndex = 10;
     } else {
         userPanel.style.display = 'none';
     }
 };
 
+/**OK Close User Panel */
+function CloseUserPanel() {
+    document.getElementById('user-container').style.display = 'none';
+}
+
+
+
 /**
  * Show/hide leader panel
  */
-function ShowLeaderPanel() {
-    let leaderPanel = document.getElementById('leader');
+function ShowLeaderBoard() {
+    let leaderPanel = document.getElementById('leader-container');
     if (leaderPanel.style.display === 'none') {
         leaderPanel.style.display = 'block';
-        leaderPanel.style.zIndex = 11;
     } else {
         leaderPanel.style.display = 'none';
     }
-    WriteLeaderboard();
+    WriteLeaderBoard();
 };
 
 /**
  * Write leaderboard items on Leaderpanel.
  */
-function WriteLeaderboard() {
+function WriteLeaderBoard() {
 
     //Clear div content
     document.getElementById('leader').innerHTML = "";
@@ -730,6 +734,10 @@ function WriteLeaderboard() {
     }
     document.getElementById('leader').appendChild(scoreList);
 };
+
+function CloseLeaderBoard() {
+    document.getElementById('leader-container').style.display = 'none';
+}
 
 /** OK Begin of the game */
 function StartNewGame() {

@@ -37,13 +37,14 @@
         <h1>Professor</h1>
 
         <div>
-            <i class="fa-solid fa-trophy" onclick="ShowLeaderPanel()"></i>
+            <i class="fa-solid fa-trophy" onclick="ShowLeaderBoard()"></i>
         </div>
     </header>
     <main>
 
         <!--user panel-->
         <div id="user-container">
+            <i class="fa-solid fa-xmark" onclick="CloseUserPanel()"></i>
             <div id="user">
                 <p>Welcome: <span class="name"></span> !</p>
                 <p>Your Email is: <span id="mail"></span></p>
@@ -54,7 +55,9 @@
 
         <!--Leaderboard-->
         <div id="leader-container">
-            <div id="leader"></div>
+            <i class="fa-solid fa-xmark" onclick="CloseLeaderBoard()"></i>
+            <div id="leader">
+            </div>
         </div>
 
         <!--End of leaderboard-->
