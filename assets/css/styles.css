@@ -3,6 +3,7 @@
 :root {
     --blue: #1e90ff;
     --white: #fff;
+    --background: #cdffcd;
 }
 
 /*Reset CSS*/
@@ -20,6 +21,7 @@ body {
     font-family: Inter, sans-serif;
     justify-content: center;
     align-items: center;
+    background-color: var(--background);
 }
 
 h1 {
@@ -37,6 +39,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+    background-color: var(--background);
 }
 
 input[type=text],
@@ -46,7 +49,13 @@ input[type=email] {
     width: 250px;
     outline: 0;
     border-width: 0 0 2px;
+    border-color: var(--blue);
     font-size: 22px;
+    color: var(--blue);
+}
+
+input[type=text]::placeholder,
+input[type=email]::placeholder {
     color: var(--blue);
 }
 
@@ -59,9 +68,18 @@ input[type=submit] {
     color: var(--blue);
     background-color: var(--white);
     border-radius: 5px;
+    border-color: var(--blue);
+
 }
 
 input[type=submit]:hover {
     background-color: var(--blue);
     color: var(--white);
+    border-color: var(--blue);
+}
+
+.index-container {
+    padding: 20px 20px;
+    background-color: var(--white);
+    border-radius: 10px;
 }

@@ -4,6 +4,7 @@
     --blue: #1e90ff;
     --white: #fff;
     --whitesmoke: #f5f5f5;
+    --background: #cdffcd;
 }
 
 /*Reset CSS*/
@@ -35,9 +36,8 @@ footer {
     align-items: center;
     padding: 10px;
     color: var(--blue);
-    background-color: var(--whitesmoke);
     border-bottom: 2px ridge var(--blue);
-
+    background-color: var(--background);
 }
 
 header i {
@@ -48,7 +48,6 @@ header i {
 
 header i:hover {
     cursor: pointer;
-
 }
 
 /* #endregion */
@@ -86,7 +85,6 @@ div#user button {
     width: 90%;
     height: 35px;
     margin-left: 5%;
-
 }
 
 div#user button:hover {
@@ -188,6 +186,17 @@ div#leader {
     width: 80%;
     margin: 15px auto;
     padding: 5px;
+    background-color: var(--whitesmoke);
+    color: black;
+    border-color: var(--blue);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.answer-button:hover {
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--white);
 }
 
 /* #endregion */
