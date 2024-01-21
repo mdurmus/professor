@@ -4,7 +4,9 @@
     --blue: #1e90ff;
     --white: #fff;
     --whitesmoke: #f5f5f5;
-    --background: #bbebd3;
+    --background: #e0f6fb;
+    --correctbg: #e6ffe6;
+    --incorrectbg: #FF4A43;
 }
 
 /*Reset CSS*/
@@ -12,6 +14,12 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Inter', sans-serif;
 }
 
 /*Default body settings*/
@@ -26,6 +34,7 @@ main {
     flex: 1 0 auto;
 }
 
+/* #region Smartphones */
 
 /* #region Header */
 header,
@@ -68,7 +77,6 @@ div#user-container>i {
     justify-content: right;
     cursor: pointer;
     color: white;
-    z-index: 10;
 }
 
 div#user {
@@ -105,7 +113,7 @@ div#leader-container {
     width: 80%;
     padding: 5px;
     background-color: var(--blue);
-    z-index: 99999999;
+    z-index: 10;
 }
 
 div#leader-container>i {
@@ -134,7 +142,7 @@ div#leader {
 
 /* #region Category-Timer */
 .category-timer {
-    font-size: 26px;
+    font-size: 1.4rem;
     font-weight: bold;
     display: flex;
     flex-direction: row;
@@ -158,7 +166,7 @@ div#leader {
     border-radius: 5px;
     background-color: var(--whitesmoke);
     width: 90%;
-    height: 225px;
+    height: 200px;
     padding: 10px;
     overflow-y: scroll;
     margin: 20px auto;
@@ -184,19 +192,28 @@ div#leader {
     justify-content: center;
     align-items: center;
     width: 80%;
-    margin: 15px auto;
+    margin: 10px auto;
     padding: 5px;
     background-color: var(--whitesmoke);
     color: black;
     border-color: var(--blue);
-    font-size: 25px;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 .answer-button:hover {
     cursor: pointer;
-    background-color: var(--blue);
-    color: var(--white);
+    color: var(--blue);
+}
+
+.answer-correct {
+    background-color: var(--correctbg);
+    color: var(--blue);
+}
+
+.answer-incorrect {
+    background-color: var(--incorrectbg);
+    color: var(--white) !important;
 }
 
 /* #endregion */
@@ -219,71 +236,329 @@ div#leader {
 /* #endregion */
 
 /* #region Result */
-#result {
-    display: none;
-    position: fixed;
-    left: 10%;
-    top: 35%;
-    width: 80%;
-    height: 350px;
-    background-color: antiquewhite;
-    padding: 20px;
-    border-radius: 15px;
-    font-size: 1rem;
-    z-index: 0;
 
+#result {
+    display: block;
+    position: fixed;
+    left: 5%;
+    top: 15%;
+    width: 90%;
+    background-color: var(--correctbg);
+    padding: 10px;
+    border-radius: 15px;
+    font-size: .8rem;
+    border: 4px solid var(--blue);
+}
+
+#result>hr {
+    margin: 5px 0px;
 }
 
 #result-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 5px;
 
 }
 
 #result-container div {
-    padding: 15px;
-    margin: 10px 15px;
+    padding: 5px;
+    margin: 5px 0px;
 }
 
 #result-container p {
 
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+    margin: 5px 0px;
 }
 
-#result-container i {
-
-    margin: 0px 15px;
+#right {
+    font-weight: bold;
+    color: #006400;
 }
 
-#result>p {
-    margin: 10px 0;
+#false {
+    font-weight: bold;
+    color: #FA1A16;
 }
 
-div.game-buttons {
+#temp-point,
+#total-point {
+    font-weight: bold;
+    color: #0115FA;
+}
+
+div.game-buttons div {
     margin: 10px 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: last baseline;
     justify-content: space-around;
-    color: #1e90ff;
+    font-size: 2.2rem;
 
 }
 
 div.game-buttons>button {
-    width: 250px;
+    width: 100%;
     padding: 5px;
-    background-color: #f5f5f5;
+    margin: 5px 0px;
+    cursor: pointer;
+    border: 1px solid var(--blue);
 }
 
 div.game-buttons>button:hover {
-    width: 249px;
+    width: 100%;
     cursor: pointer;
     padding: 5px;
-    background-color: #f00;
-    color: white;
+    border: 3px solid var(--blue);
+    font-weight: bold;
+    color: #006400;
+    background-color: var(--white);
 }
+
+/* #endregion */
+
+/* #endregion */
+
+
+/* #region Large or landscape phones (576px and up) */
+@media screen and (min-width: 576px) {
+
+    #result {
+        left: 5%;
+        top: 2%;
+        padding: 10px;
+        border-radius: 15px;
+        font-size: .8rem;
+        border: 4px solid var(--blue);
+
+    }
+}
+
+/* #endregion */
+
+/* #region Tablets and larger (768px and up) Ipad air and above */
+@media screen and (min-width: 768px) {
+
+    /* #region Header */
+    header,
+    footer {
+        font-size: 2rem;
+    }
+
+    header i {
+        font-size: 2.4rem;
+
+    }
+
+    header i:hover {
+        cursor: pointer;
+    }
+
+    /* #endregion */
+
+    /* #region User panel */
+    div#user-container {
+
+        top: 30%;
+    }
+
+    div#user p {
+        margin: 20px 5%;
+        font-size: 1.6rem;
+    }
+
+    div#user button {
+        width: 90%;
+        height: 35px;
+        margin: 5%;
+
+    }
+
+    div#user button:hover {
+        cursor: pointer;
+        background-color: white;
+        color: var(--blue);
+
+    }
+
+    /* #endregion */
+
+    /* #region Leaderboard */
+    div#leader-container {
+        top: 30%;
+    }
+
+    div#leader {
+        font-size: 1.6rem;
+    }
+
+    /* #endregion Leaderboard */
+
+    /* #region Category-Timer */
+    .category-timer {
+        font-size: 1.8rem;
+    }
+
+    /* #endregion */
+
+    /* #region Question */
+    #question-number {
+        font-size: 2.7rem;
+    }
+
+    #question {
+        font-size: 1.8rem;
+        height: 260px;
+    }
+
+    /* #endregion */
+
+    /* #region Answers */
+    #answer-container {
+        margin: 30px 0px;
+    }
+
+    #answers {
+        width: 100%;
+    }
+
+    .answer-button {
+
+        margin: 15px auto;
+        font-size: 1.6rem;
+    }
+
+    /* #endregion */
+
+    /* #region Score */
+    #correct-answer,
+    #incorrect-answer {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    /* #endregion */
+
+    /* #region Result */
+
+    #result {
+        top: 20%;
+        padding: 20px;
+        font-size: 1.2rem;
+    }
+
+    #result>hr {
+        margin: 10px 0px;
+    }
+
+    #result-container div {
+        padding: 5px;
+        margin: 5px 0px;
+    }
+
+    #result-container p {
+
+        font-size: 2rem;
+        margin: 5px 0px;
+    }
+
+    div.game-buttons div {
+        margin-top: 30px;
+        font-size: 3rem;
+
+    }
+
+    div.game-buttons>button {
+
+        margin: 10px 0px;
+        font-size: 1.6rem;
+    }
+
+    div.game-buttons>button:hover {
+        margin: 10px 0px;
+        font-size: 1.6rem;
+    }
+
+    /* #endregion */
+}
+
+/* #endregion */
+
+/* #region Large devices (laptops and desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+
+    /* #region Header */
+    header,
+    footer {
+        font-size: 1rem;
+    }
+
+    header i {
+        font-size: 1.9rem;
+    }
+
+    header i:hover {
+        cursor: pointer;
+    }
+
+    /* #endregion */
+
+    /* #region Question */
+    #question-number {
+        font-size: 1.7rem;
+    }
+
+    #question {
+        font-size: 1.6rem;
+        height: 200px;
+    }
+
+    /* #endregion */
+
+    /* #region Answers */
+    #answer-container {
+        margin: 20px 0px;
+    }
+
+    #answers {
+        width: 100%;
+    }
+
+    .answer-button {
+
+        margin: 10px auto;
+        font-size: 1.4rem;
+    }
+
+    /* #endregion */
+
+    /* #region Score */
+    #correct-answer,
+    #incorrect-answer {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    /* #endregion */
+
+    /* #region Result */
+
+    #result {
+        top: 9%;
+        padding: 20px;
+        font-size: 1.2rem;
+    }
+
+    /* #endregion */
+}
+
+/* #endregion */
+
+/* #region Largest screens */
+
+@media screen and (min-width: 1200px) {}
 
 /* #endregion */

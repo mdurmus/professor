@@ -441,9 +441,9 @@ function Countdown(questionNumber) {
             ShowCorrectAnswer();
             setTimeout(function () { ShowQuestion(questionNumber) }, 3000);
         } else if (second < 10) {
-            countdownerdiv.style.color = 'red';
+            countdownerdiv.style.color = '#F00';
         } else if (second < 20) {
-            countdownerdiv.style.color = 'orange';
+            countdownerdiv.style.color = '#FFA01B';
         } else if (second < 30) {
             countdownerdiv.style.color = '#1e90ff';
         }
@@ -458,8 +458,7 @@ function checkAnswer(event) {
     console.log(questionNumber);
     let result = this.getAttribute('to');
     if (result === 'false') {
-        this.style.backgroundColor = '#f00';
-        this.style.color = '#fff';
+        this.classList.add('answer-incorrect');
         DisableAllButtons();
         ShowHint(questionNumber);
         IncreaseIncorrectAnswer();
@@ -476,8 +475,6 @@ function checkAnswer(event) {
         DisableAllButtons();
         ShowCorrectAnswer();
         IncreaseCorrectAnswer();
-        this.style.backgroundColor = 'lightgreen';
-        this.style.color = 'black';
         let buttonsPassive = CheckAnswerButtonsBeforeFinish();
         if (quizquestionNumber === 10 && buttonsPassive) {
             GameFinish();
@@ -493,11 +490,15 @@ function checkAnswer(event) {
  */
 function ClearScores() {
     let correctAnswer = document.getElementById('correct-answer').getElementsByTagName('span')[0];
-    correctAnswer.innerText = '00';
+    correctAnswer.innerText = '0';
     let inCorrectAnswer = document.getElementById('incorrect-answer').getElementsByTagName('span')[0];
-    inCorrectAnswer.innerText = '00';
+    inCorrectAnswer.innerText = '0';
 
 }
+
+
+
+
 function CheckAnswerButtonsBeforeFinish() {
     let buttons = document.getElementById('answers').getElementsByTagName('button');
     for (let i = 0; i < buttons.length; i++) {
@@ -524,6 +525,7 @@ function ClearItems() {
     ClearQuestion();
     ClearCategory();
     ClearScores();
+    ClearTimer();
 }
 /**
  * Show Game Result screen */
@@ -538,8 +540,6 @@ function ShowResult(correctAnswer, incorrectAnswer) {
     let tempPoint = parseInt(tempPointElement.textContent) || 0; // Use 0 if parsing fails
 
     tempPointElement.innerHTML = point;
-    tempPointElement.style.color = 'red';
-    tempPointElement.style.fontSize = '2rem';
 
     document.getElementById('right').innerHTML = correctAnswer;
     document.getElementById('false').innerHTML = incorrectAnswer;
@@ -555,12 +555,17 @@ function ShowResult(correctAnswer, incorrectAnswer) {
  */
 function CalculatePoint(correctAnswer, inCorrectAnswer) {
     return (correctAnswer * 5) - inCorrectAnswer;
-};
+}
 /**
  * Clear category div */
 function ClearCategory() {
     let category = document.getElementById('category-name');
     category.innerHTML = '';
+}
+/**Clear Timer */
+function ClearTimer() {
+    let timer = document.getElementById('timer');
+    timer.innerHTML = '';
 }
 /**
  * Clear question div */
@@ -577,11 +582,11 @@ function IncreaseCorrectAnswer() {
     document.getElementById('correct-answer').querySelector('span').innerText = intNumber + 1;
 }
 /**
- * SHow corecct answer.
+ * Show corecct answer.
  */
 function ShowCorrectAnswer() {
     let correctAnswer = document.querySelector('.answer-button[to="true"]');
-    correctAnswer.style.backgroundColor = '#e6ffe6';
+    correctAnswer.classList.add('answer-correct');
 }
 /**
  * The method that increases the number of wrong answers.
@@ -646,7 +651,7 @@ function ShowUserPanel() {
     } else {
         userPanel.style.display = 'none';
     }
-};
+}
 /**OK Close User Panel */
 function CloseUserPanel() {
     document.getElementById('user-container').style.display = 'none';
@@ -673,7 +678,7 @@ function WriteLeaderBoard() {
 
     //Create elment and set attribute for css class
     let scoreList = document.createElement('ol');
-    scoreList.setAttribute('name', 'score-list')
+    scoreList.setAttribute('name', 'score-list');
 
     UpdateUserScore();
 
