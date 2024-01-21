@@ -374,19 +374,21 @@ let questionBank = [
 
 // #endregion //
 
-/**
- * The method that starts the Quiz.
+
+
+/** The method starts new Quiz.
  */
 function StartQuiz() {
     questions = [];
     GetQuestionsFromBank();
     ShowQuestion();
 }
-/**
- * Print question and answer on screen.
- * @param {*} counter 
+
+/** Print question and answer on screen.
+ * @param {questionIndexNumber} questionNumber
  */
 function ShowQuestion(questionIndexNumber = 0) {
+    //If it's question 10, I have to finish the game.
     if (questionIndexNumber === 10) {
         Countdown(questionIndexNumber + 1);
         clearInterval(countdown);
@@ -394,20 +396,19 @@ function ShowQuestion(questionIndexNumber = 0) {
     }
     if (questionIndexNumber < 10) {
         Countdown(questionIndexNumber + 1);
-        //Get question from Array.
+        //I take the question from the series according to the question number
         let question = questions[questionIndexNumber];
 
-        //Write category name
+        //Category name
         document.getElementById('category-name').innerHTML = question['category'];
 
-        //Write question
+        //Question
         document.getElementById('question').innerHTML = question['question'];
 
-        //Sonraki sorunun numarasini yaziyorum
-        //Sorunun numarasi indexin bir büyügü oluyor.
+        //Number of the next question.
         document.getElementById('question-number').innerText = questionIndexNumber + 1;
 
-        //Cevaplar butonunun oldugu yerler.
+        //Answers buttons.
         var answers = document.getElementById('answers');
         answers.innerHTML = '';
 
@@ -423,8 +424,8 @@ function ShowQuestion(questionIndexNumber = 0) {
     }
 
 }
-/**
- * Downtimer for answer check
+
+/** A method that allows the user to respond within 30 seconds
  */
 function Countdown(questionNumber) {
     clearInterval(countdown);
@@ -434,6 +435,7 @@ function Countdown(questionNumber) {
         second -= 1;
         countdownerdiv.innerHTML = second;
         if (second <= 0) {
+            //If the time is over, stop the counter and run these methods and go to next question(s).
             countdownerdiv.innerHTML = 'Time\'s Up!';
             clearInterval(countdown);
             DisableAllButtons();
@@ -449,26 +451,34 @@ function Countdown(questionNumber) {
         }
     }, 1000);
 }
-/**
- * A method of checking the correct answer. According to the results, it also performs the related skip operations and prints them on the screen. Restart new Game.
+
+/** A method of checking the correct answer. According to the results, it also performs the related skip operations and prints them on the screen. Restart new Game.
  */
 function checkAnswer(event) {
+    // I need to know what question I'm on. If I'm on the tenth question, I shouldn't show any more questions.
     let quizquestionNumber = parseInt(document.getElementById('question-number').innerText);
+
+    //I'm taking the question number so I can show the clue to the question. questionNumber -> qn
     let questionNumber = this.getAttribute('qn');
-    console.log(questionNumber);
+
+    //I'm getting the answer to question to check. trueOption -> to
     let result = this.getAttribute('to');
+
     if (result === 'false') {
+        //Add incorrect answer css class
         this.classList.add('answer-incorrect');
         DisableAllButtons();
         ShowHint(questionNumber);
         IncreaseIncorrectAnswer();
         ShowCorrectAnswer();
         let buttonsPassive = CheckAnswerButtonsBeforeFinish();
+        //If the last question is answered, I'm finishing the game.
         if (quizquestionNumber === 10 && buttonsPassive) {
             GameFinish();
             clearInterval(countdown);
             event.preventDefault();
         } else {
+            //If it's not the last question, move on to the next one.
             setTimeout(ShowQuestion, 3000, quizquestionNumber);
         }
     } else {
