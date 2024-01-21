@@ -59,10 +59,9 @@
             <div id="leader">
             </div>
         </div>
-
         <!--End of leaderboard-->
 
-        <!--Categor and timer section-->
+        <!--Category and timer section-->
         <div class="category-timer">
             <div id="category-name">Category Name</div>
             <div id="timer">XX</div>
@@ -80,23 +79,32 @@
             <div id="answers"></div>
         </div>
         <!--End od answer section-->
-
     </main>
+
     <footer>
+        <!--Correct answer counter-->
         <div id="correct-answer">
             <i class="fa-regular fa-face-smile-wink"></i>
             <span>00</span>
         </div>
+        <!--End of Correct anwer counter-->
+
+        <!--Question Number-->
         <div><span id="question-number"></span> / 10</div>
+        <!--End of Question Number-->
+
+        <!--Incorrect Answer counter-->
         <div id="incorrect-answer">
             <i class="fa-solid fa-face-frown"></i>
             <span>00</span>
         </div>
+        <!--End of Incorrect answer counter-->
 
         <!--Begin of Result-->
         <div id="result">
             <h2>Congrats, <span class="name"></span> !</h2>
             <hr>
+            <!--Points Section-->
             <div id="result-container">
                 <div>
                     <p>Correct answer: <span id="right"></span></p>
@@ -107,7 +115,9 @@
                     <p>Total Point: <span id="total-point"></span></p>
                 </div>
             </div>
+            <!--End of point section-->
             <hr>
+            <!--Share buttons-->
             <div class="game-buttons">
                 <h2>Share/Follow Us</h2>
                 <div>
@@ -116,11 +126,15 @@
                     <a href="#"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
+            <!--End of share buttons-->
+
+            <!--New game buttons-->
             <div id="game-review" class="game-buttons">
                 <button onclick="StartNewGame()">New Game</button>
                 <button onclick="ShowLeaderPanel()">Leaderboard</button>
                 <button onclick="Logout()">Logout</button>
             </div>
+            <!--End of new game buttons-->
         </div>
         <!--End of result-->
     </footer>
