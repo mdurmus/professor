@@ -21,7 +21,11 @@ You can acess live application here: [Professor](https://mdurmus.github.io/profe
 
 <img src='assets/docs/readme_files/mobileResult.webp' alt="Mobile devices view">
 
+## Site Owner Goals:
 
+As the owner of the application, our main goals include increasing user engagement. To achieve this, we aim to encourage users to participate in quizzes regularly and ensure they spend more time within the application. Simultaneously, we plan to enhance interaction among users by fostering a community, thus building a stronger user base.
+
+Furthermore, we aspire to broaden our user base by focusing on expanding the visibility of our application, reaching a wider audience. In this regard, we emphasize marketing and promotional activities, aiming to establish an effective presence on social media and other platforms. The long-term goals also involve merging education and entertainment, allowing users to learn while having fun.
 
 
 
