@@ -485,30 +485,30 @@ function checkAnswer(event) {
         DisableAllButtons();
         ShowCorrectAnswer();
         IncreaseCorrectAnswer();
+        //If the last question is answered, I'm finishing the game.
         let buttonsPassive = CheckAnswerButtonsBeforeFinish();
         if (quizquestionNumber === 10 && buttonsPassive) {
             GameFinish();
             clearInterval(countdown);
             event.preventDefault();
         } else {
+            //If it's not the last question, move on to the next one.
             setTimeout(ShowQuestion, 3000, quizquestionNumber);
         }
     }
 }
-/**
- * Clear scores
+
+/*  Clear scores
  */
 function ClearScores() {
     let correctAnswer = document.getElementById('correct-answer').getElementsByTagName('span')[0];
     correctAnswer.innerText = '0';
     let inCorrectAnswer = document.getElementById('incorrect-answer').getElementsByTagName('span')[0];
     inCorrectAnswer.innerText = '0';
-
 }
 
-
-
-
+/* I check if the buttons are passive or not
+ */
 function CheckAnswerButtonsBeforeFinish() {
     let buttons = document.getElementById('answers').getElementsByTagName('button');
     for (let i = 0; i < buttons.length; i++) {
@@ -517,8 +517,8 @@ function CheckAnswerButtonsBeforeFinish() {
         }
     }
 }
-/**
- * Finish this session and showing score table.
+
+/* Finish this session and showing score table.
  */
 function GameFinish() {
 
@@ -527,9 +527,9 @@ function GameFinish() {
     ClearItems();
     ShowResult(correctAnswer, inCorrectAnswer);
 }
-/** OK
- * Oyun sonrasi ilgilialanlari temizleme
- */
+
+/* Cleaning up relevant areas after the game
+*/
 function ClearItems() {
     DisableAllButtons();
     ClearQuestion();
@@ -566,48 +566,52 @@ function ShowResult(correctAnswer, incorrectAnswer) {
 function CalculatePoint(correctAnswer, inCorrectAnswer) {
     return (correctAnswer * 5) - inCorrectAnswer;
 }
-/**
- * Clear category div */
+
+/*
+Clear category div */
 function ClearCategory() {
     let category = document.getElementById('category-name');
     category.innerHTML = '';
 }
-/**Clear Timer */
+
+/*
+Clear Timer */
 function ClearTimer() {
     let timer = document.getElementById('timer');
     timer.innerHTML = '';
 }
-/**
+
+/*
  * Clear question div */
 function ClearQuestion() {
     let question = document.getElementById('question');
     question.innerHTML = '';
 }
-/**
- * OK The method that increases the correct answer score.
+
+/*The method that increases the correct answer score.
  */
 function IncreaseCorrectAnswer() {
     let strnumber = document.getElementById('correct-answer').querySelector('span').innerText;
     let intNumber = parseInt(strnumber);
     document.getElementById('correct-answer').querySelector('span').innerText = intNumber + 1;
 }
-/**
- * Show corecct answer.
+
+/* Show corecct answer.
  */
 function ShowCorrectAnswer() {
     let correctAnswer = document.querySelector('.answer-button[to="true"]');
     correctAnswer.classList.add('answer-correct');
 }
-/**
- * The method that increases the number of wrong answers.
+
+/*The method that increases the number of wrong answers.
  */
 function IncreaseIncorrectAnswer() {
     let stringNumber = document.getElementById('incorrect-answer').querySelector('span').innerText;
     let intNumber = parseInt(stringNumber);
     document.getElementById('incorrect-answer').querySelector('span').innerText = intNumber + 1;
 }
-/**
- * 
+
+/*
  * @param {*} questionNumber 
  * If the user has given an incorrect answer, a method that provides a clue to the correct answer.
  */
@@ -616,8 +620,8 @@ function ShowHint(questionNumber) {
     document.getElementById('question').innerHTML += '<br><span style="background-color:orange">' + answer + '</span>';
 
 }
-/**OK 
- * Locks all buttons after the answer is given.
+
+/*Locks all buttons after the answer is given.
  */
 function DisableAllButtons() {
     let buttons = document.getElementById('answers').querySelectorAll('button');
@@ -626,33 +630,41 @@ function DisableAllButtons() {
     });
 
 }
-/**
- * Read user data from Session storage as key/value object.
+
+
+/*Read user data from Session storage as key/value object.
  */
 function ReadSessionData() {
 
     let userName = sessionStorage.getItem('userName');
-    let userScore = 0;
     let eMail = sessionStorage.getItem('eMail');
 
+    //Check session data
     if (userName != null && eMail != null) {
         var allNameSpan = document.getElementsByClassName('name');
         for (let index = 0; index < allNameSpan.length; index++) {
             allNameSpan[index].innerHTML = userName;
         }
         document.getElementById('mail').innerHTML = eMail;
-        players.push({ name: 'ali', score: 20 });
-        players.push({ name: userName, score: userScore });
+        WriteScoreTable(userName);
         StartNewGame();
     }
 }
-/**
- * Logout and clear session storage */
+
+/*Add score table logged user
+ */
+function WriteScoreTable(playerName) {
+
+    players.push({ name: playerName, score: 0 });
+}
+
+/*Logout and clear session storage */
 function Logout() {
     sessionStorage.clear();
     window.location.href = "index.html";
 }
-/** OK Show/hide user panel
+
+/*Show/hide user panel
  */
 function ShowUserPanel() {
     let userPanel = document.getElementById('user-container');
@@ -662,12 +674,13 @@ function ShowUserPanel() {
         userPanel.style.display = 'none';
     }
 }
-/**OK Close User Panel */
+
+/*Close User Panel */
 function CloseUserPanel() {
     document.getElementById('user-container').style.display = 'none';
 }
-/**
- * Show/hide leader panel
+
+/*Show/hide leader panel
  */
 function ShowLeaderBoard() {
     let leaderPanel = document.getElementById('leader-container');
@@ -678,6 +691,7 @@ function ShowLeaderBoard() {
     }
     WriteLeaderBoard();
 }
+
 /**
  * Write leaderboard items on Leaderpanel.
  */
@@ -697,7 +711,7 @@ function WriteLeaderBoard() {
         listItem.style.margin = '10px 0px';
         let player = players[i].name;
         let score = players[i].score;
-        listItem.innerHTML = player + ' - ' + score;
+        listItem.innerHTML = player + ' - ' + parseInt(score);
         scoreList.appendChild(listItem);
     }
     document.getElementById('leader').appendChild(scoreList);
@@ -705,21 +719,21 @@ function WriteLeaderBoard() {
     players.sort(function (a, b) {
         return b.score - a.score;
     });
-
-    // Sıralanmış oyuncuları konsola yazdır
-    console.log(players);
 }
-/**
- * Update user score on score list
- */
+
+/*Update user score on score list */
 function UpdateUserScore() {
+
     let userName = sessionStorage.getItem('userName');
     let userIndex = players.findIndex(p => p.name === userName);
-    let score = parseInt(document.getElementById('total-point').innerHTML);
+    let score = parseFloat(document.getElementById('total-point').innerHTML);
     players[userIndex].score = score;
 }
-/** */
+
+/*Show Leaderpanel */
 function ShowLeaderPanel() {
+    UpdateUserScore();
+    WriteLeaderBoard();
     let leaderPanel = document.getElementById('leader-container');
     if (leaderPanel.style.display === 'none') {
         leaderPanel.style.display = 'block';
@@ -727,13 +741,13 @@ function ShowLeaderPanel() {
         leaderPanel.style.display = 'none';
     }
 }
-/** 
- * Close Leaderboard window */
+
+/* Close Leaderboard window */
 function CloseLeaderBoard() {
     document.getElementById('leader-container').style.display = 'none';
 }
-/**
- *  Begin of the game */
+
+/* Begin of the game */
 function StartNewGame() {
     //Hide result panel.
     let win = document.getElementById('result');
@@ -741,6 +755,7 @@ function StartNewGame() {
     ClearScores();
     StartQuiz();
 }
+
 /** 
  * Getting mixed 10 question from QuestionBank
  * and push questions array.
@@ -751,12 +766,18 @@ function GetQuestionsFromBank() {
     let selectedIndex = [];
     let selectedQuestions = [];
 
+    //I need ten quetions
     while (selectedQuestions.length < 10) {
+        //Generate ten questions
         let randomIndex = Math.floor(Math.random() * 30);
+        //Check this index already saved
         if (!selectedIndex.includes(randomIndex)) {
+            //Set index number
             selectedIndex.push(randomIndex);
+            // Get question
             selectedQuestions.push(questionBank[randomIndex]);
         }
     }
+    //Fill question array
     questions = selectedQuestions;
 }

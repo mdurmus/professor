@@ -238,7 +238,7 @@ div#leader {
 /* #region Result */
 
 #result {
-    display: block;
+    display: none;
     position: fixed;
     left: 5%;
     top: 15%;
