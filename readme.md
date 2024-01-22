@@ -23,11 +23,23 @@ You can acess live application here: [Professor](https://mdurmus.github.io/profe
 
 ## Site Owner Goals:
 
-As the owner of the application, our main goals include increasing user engagement. To achieve this, we aim to encourage users to participate in quizzes regularly and ensure they spend more time within the application. Simultaneously, we plan to enhance interaction among users by fostering a community, thus building a stronger user base.
+- **Increase User Engagement:**
+  - Encourage regular participation in quizzes.
+  - Ensure users spend more time within the application.
 
-Furthermore, we aspire to broaden our user base by focusing on expanding the visibility of our application, reaching a wider audience. In this regard, we emphasize marketing and promotional activities, aiming to establish an effective presence on social media and other platforms. The long-term goals also involve merging education and entertainment, allowing users to learn while having fun.
+- **Foster Community Interaction:**
+  - Build a sense of community among users.
+  - Strengthen the user base through increased interaction.
 
+- **Expand User Base:**
+  - Broaden visibility to reach a wider audience.
+  - Implement marketing and promotional activities.
+  - Establish a presence on various platforms.
 
+- **Merge Education and Entertainment:**
+  - Create an environment where users can learn while having fun.
+
+These goals collectively aim to enhance the overall user experience and contribute to the long-term success of the Professor application.
 
 
 
