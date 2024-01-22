@@ -19,6 +19,9 @@ Professor ensures a fresh and exciting experience every time you play. The app's
 
 You can acess live application here: [Professor](https://mdurmus.github.io/professor)
 
+<img src='assets/docs/readme_files/mobileResult.webp' alt="Mobile devices view">
+
+
 
 
 
