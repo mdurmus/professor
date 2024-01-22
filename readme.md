@@ -39,8 +39,24 @@ You can acess live application here: [Professor](https://mdurmus.github.io/profe
 - **Merge Education and Entertainment:**
   - Create an environment where users can learn while having fun.
 
-These goals collectively aim to enhance the overall user experience and contribute to the long-term success of the Professor application.
+## User Stories
 
+### First time users
+
+- Secure Login:
+   Professor ensures your safety with a secure login feature. With the assurance that your personal information is protected, you can focus on exploring the app.
+
+- General Knowledge Enhancement:
+   Explore carefully selected questions in different categories to enhance your general knowledge. Engage with questions from history, science, art, and more.
+
+- Correct and Incorrect Answers:
+   Learn correct answers with each question and receive valuable hints for incorrect answers, allowing you to track your progress.
+
+- Time Management:
+   Only 30 seconds per question! Race against time, push your limits, and enhance your quick-thinking skills.
+
+- Point Sharing:
+   Share your earned points with pride! Professor provides an opportunity to compete with friends on social platforms and share your achievements.
 
 
 **How to Play:**
