@@ -116,9 +116,9 @@ On this screen, users can view users who have reached peaks of knowledge, or the
 
 <img src='assets/docs/readme_files/question.webp' alt='Question area'>
 
-On this screen, the user can view which category the problem is in. They can also see how many seconds they have left with a timer. If there is less than 20 seconds left, the timer is displayed in orange and if there is less than 10 seconds left, it is displayed in red.
+On this screen the user can see which category the problem is in. They can also see how many seconds they have left with a timer. If there are less than 20 seconds left, the timer is shown in orange and if there are less than 10 seconds left, it is shown in red.
 
-Also, when the user gives an answer (i.e. clicks on one of the option buttons), the background color is green if the answer is correct and red if the answer is incorrect. 
+Also, when the user gives an answer (i.e. clicks on one of the option buttons), the background color is green if the answer is correct and red if the answer is incorrect. And if the answer is incorrect, a hint for this answer is also given in the question field.
 
 ## Scoreboard
 
@@ -134,15 +134,44 @@ On this screen, users can view their total points earned during an exam, as well
 
 They can start a new game, view the leaderboard or log out of the system with the buttons at the bottom.
 
-
-
 **How to Play:**
 - Log in with your name and email.
-- Explore various question categories.
 - Answer each question within the allotted time.
 - Earn points and climb the leaderboard.
 
-Get ready to explore the world of knowledge in a fun and interactive way. Start your trivia journey with Professor - Question Bank now!
+### Features Left to Implement
+Features such as the ability to add questions, send points to your e-mail address or invite other friends could have been added.
+
+## Testing
+
+### Validator Testing
+
+<details>
+<summary>HTML Validation</summary>
+ [Html Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmdurmus.github.io%2Fprofessor%2F)
+
+<img src='assets/docs/readme_files/htmlValidation.webp' alt='Html Validation'>
+
+ No errors were returned when passing through the official W3C Markup Validator.
+</details>
+
+<details>
+<summary>CSS Validation</summary>
+[CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmdurmus.github.io%2Fprofessor%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+
+<img src='assets/docs/readme_files/cssValidation.webp' alt='CSS Validation'>
+</details>
+
+
+<details>
+<summary>Javascript Validation</summary>
+No errors were returned when passing through the Jshint.com
+
+<img src='assets/docs/readme_files/jsValidation.webp' alt='JShint.com'>
+</details>
+
+
+
 
 
 Favicons generated from https://realfavicongenerator.net/
