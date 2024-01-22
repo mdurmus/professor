@@ -148,43 +148,47 @@ Features such as the ability to add questions, send points to your e-mail addres
 
 <details>
 <summary>HTML Validation</summary>
-
  [Html Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmdurmus.github.io%2Fprofessor%2F)
-
 <img src='assets/docs/readme_files/htmlValidation.webp' alt='Html Validation'>
-
  No errors were returned when passing through the official W3C Markup Validator.
 </details>
 
 <details>
 <summary>CSS Validation</summary>
-
 [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmdurmus.github.io%2Fprofessor%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-
 <img src='assets/docs/readme_files/cssValidation.webp' alt='CSS Validation'>
-
 </details>
 
 
 <details>
 <summary>Javascript Validation</summary>
-
 <img src='assets/docs/readme_files/jsValidation.webp' alt='JShint.com'>
-
 No errors were returned when passing through the Jshint.com
 </details>
 
 <details>
 <summary>Lighthouse Mobile Testing</summary>
-
 <img src='assets/docs/readme_files/mobile.webp' alt='Lighthouse Mobile'>
 </details>
 
 <details>
 <summary>Lighthouse Desktop Testing</summary>
-
 <img src='assets/docs/readme_files/desktop.webp' alt='Lighthouse Desktop'>
 </details>
+
+### Browser Testing
+
+- The Website was tested on Google Chrome, Firefox, Microsoft Edge, Safari browsers with no issues noted.
+
+### Device Testing
+
+- The website was viewed on a variety of devices such as Desktop, Laptop, iPhone 8, iPhoneX, iPhone 14, iPhone 6,7,8, Samsung Galaxy S20, Galaxy Fold and iPad, iPad Pro to ensure responsiveness on various screen sizes. The website performed as intended. The responsive design was also checked using Chrome developer tools across multiple devices with structural integrity holding for the various sizes.
+
+- I also used the following websites to test responsiveness:
+
+     [Responsinator](http://www.responsinator.com/?url=mdurmus.github.io%2Fprofessor)
+
+     [Am I responsive](https://ui.dev/amiresponsive?url=https://mdurmus.github.io/professor)
 
 
 Favicons generated from https://realfavicongenerator.net/
