@@ -89,6 +89,40 @@ I used the [balsamiq](https://www.balsamiq.com) tool for my sketches.
 
 ## Features
 
+The application is a complete single page application. It allows you to use every function on a single screen. It has been tested on all screen resolutions. You can find the list of devices below.
+
+## Login Screen
+
+<img src='assets/docs/readme_files/login.webp' alt='Login page'>
+
+Users are required to provide a name. They must also provide an email address. 
+
+## Users's Panel
+
+<img src='assets/docs/readme_files/user.webp' alt='user panel'>
+
+With a simple design and functional use, Professor provides its users with an enjoyable learning experience.
+
+### User's Info
+
+<img src='assets/docs/readme_files/userInfo.webp' alt='User Info'>
+Users can view their login information on this screen or log out if they wish. 
+
+### Leaderboard
+<img src='assets/docs/readme_files/leaderboard.webp' alt='Leaderboard'>
+On this screen, users can view users who have reached peaks of knowledge, or they can reach that peak themselves.
+
+## Question Section
+
+<img src='assets/docs/readme_files/question.webp' alt='Question area'>
+
+On this screen, the user can view which category the problem is in. They can also see how many seconds they have left with a timer. If there is less than 20 seconds left, the timer is displayed in orange and if there is less than 10 seconds left, it is displayed in red.
+
+Also, when the user gives an answer (i.e. clicks on one of the option buttons), the background color is green if the answer is correct and red if the answer is incorrect. 
+
+## Scoreboard
+
+## Result Section
 
 
 
