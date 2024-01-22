@@ -41,22 +41,24 @@ You can acess live application here: [Professor](https://mdurmus.github.io/profe
 
 ## User Stories
 
-### First time users
+### First-time users
 
-- Secure Login:
-   Professor ensures your safety with a secure login feature. With the assurance that your personal information is protected, you can focus on exploring the app.
+- Professor ensures your safety with a secure login feature. With the assurance that your personal information is protected, you can focus on exploring the app.
 
-- General Knowledge Enhancement:
-   Explore carefully selected questions in different categories to enhance your general knowledge. Engage with questions from history, science, art, and more.
+- Explore carefully selected questions in different categories to enhance your general knowledge. Engage with questions from history, science, art, and more.
 
-- Correct and Incorrect Answers:
-   Learn correct answers with each question and receive valuable hints for incorrect answers, allowing you to track your progress.
+- Learn correct answers with each question and receive valuable hints for incorrect answers, allowing you to track your progress.
 
-- Time Management:
-   Only 30 seconds per question! Race against time, push your limits, and enhance your quick-thinking skills.
+- Only 30 seconds per question! Race against time, push your limits, and enhance your quick-thinking skills.
 
-- Point Sharing:
-   Share your earned points with pride! Professor provides an opportunity to compete with friends on social platforms and share your achievements.
+- Share your earned points with pride! Professor provides an opportunity to compete with friends on social platforms and share your achievements.
+
+### Returning user:
+
+- Experience the excitement of learning new information every time with the updated question bank. 
+
+- To be honoured as I increase my knowledge and to invite my friends by sharing it on social media
+
 
 
 **How to Play:**
