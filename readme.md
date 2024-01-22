@@ -13,7 +13,13 @@ Answer questions correctly to earn points and track your progress. Compete again
 🌐 **Share Your Success:**
 Showcase your scores on social media to share your achievements. Invite your friends to surpass your score and join the Professor community.
 
-You can acess live application here: https://mdurmus.github.io/professor/
+🚀 Experience the Randomized Challenge:
+Professor ensures a fresh and exciting experience every time you play. The app's intelligent randomization feature selects questions dynamically, keeping the game dynamic and enjoyable.
+
+
+You can acess live application here: [Professor](https://mdurmus.github.io/professor)
+
+
 
 
 
