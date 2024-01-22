@@ -29,7 +29,7 @@
 
 <body onload="ReadSessionData()">
 
-    <header>
+    <header aria-label="Left side user panel, right side leader panel">
         <div>
             <i class="fa-solid fa-user" onclick="ShowUserPanel()"></i>
         </div>
@@ -121,18 +121,21 @@
             <div class="game-buttons">
                 <h2>Share/Follow Us</h2>
                 <div>
-                    <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" target="_blank" aria-label="Share your point on Facebook" rel="noopener noreferrer"
+                        title="Facebook"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="#" target="_blank" aria-label="Share your point on Instagram" rel="noopener noreferrer"
+                        title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="Share your point on Tiktok" rel="noopener noreferrer"
+                        title="Tik tok"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
             <!--End of share buttons-->
 
             <!--New game buttons-->
             <div id="game-review" class="game-buttons">
-                <button onclick="StartNewGame()">New Game</button>
-                <button onclick="ShowLeaderPanel()">Leaderboard</button>
-                <button onclick="Logout()">Logout</button>
+                <button aria-label="Start new game" onclick="StartNewGame()">New Game</button>
+                <button aria-label="Show/hide new game" onclick="ShowLeaderPanel()">Leaderboard</button>
+                <button aria-label="Logout" onclick="Logout()">Logout</button>
             </div>
             <!--End of new game buttons-->
         </div>
