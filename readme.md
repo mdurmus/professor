@@ -70,6 +70,27 @@ Inter is a modern, clean, and readable sans-serif font family. It offers a broad
 
 ## Wireframes
 
+I used the [balsamiq](https://www.balsamiq.com) tool for my sketches.
+
+<details>
+<summary>Mobile Version</summary>
+<img src='assets/docs/wireFrame_files/mobile.webp'>
+</details>
+
+<details>
+<summary>Tablet Version</summary>
+<img src='assets/docs/wireFrame_files/tablet.webp'>
+</details>
+
+<details>
+<summary>Desktop Version</summary>
+<img src='assets/docs/wireFrame_files/desktop.webp'>
+</details>
+
+## Features
+
+
+
 
 
 
