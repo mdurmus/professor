@@ -13,6 +13,11 @@ Answer questions correctly to earn points and track your progress. Compete again
 🌐 **Share Your Success:**
 Showcase your scores on social media to share your achievements. Invite your friends to surpass your score and join the Professor community.
 
+You can acess live application here: https://mdurmus.github.io/professor/
+
+
+
+
 **How to Play:**
 - Log in with your name and email.
 - Explore various question categories.
