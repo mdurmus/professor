@@ -245,6 +245,3 @@ While preparing this document, I benefited from the guidance of the user [AliOKe
 ## Acknowledgments
 
 I thank Mentor for his valuable contributions to Mr. Antonio.
-
-
-Questions created by ChatGPT.
