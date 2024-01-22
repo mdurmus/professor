@@ -122,9 +122,17 @@ Also, when the user gives an answer (i.e. clicks on one of the option buttons), 
 
 ## Scoreboard
 
+<img src='assets/docs/readme_files/score.webp' alt='Scoreboard section'>
+
+On this screen, users can see their correct answer on the left side of the screen in green and their incorrect answer on the right side of the screen in red. They can also see the number of questions they have solved in a total of 10 questions in the middle of the screen in blue.
+
 ## Result Section
 
+<img src='assets/docs/readme_files/result.webp' alt='Result section'>
 
+On this screen, users can view their total points earned during an exam, as well as how many correct answers and how many incorrect answers they gave during that session. If they wish, they can share their achievements on social media platforms.
+
+They can start a new game, view the leaderboard or log out of the system with the buttons at the bottom.
 
 
 
