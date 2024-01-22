@@ -148,6 +148,7 @@ Features such as the ability to add questions, send points to your e-mail addres
 
 <details>
 <summary>HTML Validation</summary>
+
  [Html Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmdurmus.github.io%2Fprofessor%2F)
 
 <img src='assets/docs/readme_files/htmlValidation.webp' alt='Html Validation'>
@@ -157,21 +158,33 @@ Features such as the ability to add questions, send points to your e-mail addres
 
 <details>
 <summary>CSS Validation</summary>
+
 [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmdurmus.github.io%2Fprofessor%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
 <img src='assets/docs/readme_files/cssValidation.webp' alt='CSS Validation'>
+
 </details>
 
 
 <details>
 <summary>Javascript Validation</summary>
-No errors were returned when passing through the Jshint.com
 
 <img src='assets/docs/readme_files/jsValidation.webp' alt='JShint.com'>
+
+No errors were returned when passing through the Jshint.com
 </details>
 
+<details>
+<summary>Lighthouse Mobile Testing</summary>
 
+<img src='assets/docs/readme_files/mobile.webp' alt='Lighthouse Mobile'>
+</details>
 
+<details>
+<summary>Lighthouse Desktop Testing</summary>
+
+<img src='assets/docs/readme_files/desktop.webp' alt='Lighthouse Desktop'>
+</details>
 
 
 Favicons generated from https://realfavicongenerator.net/
