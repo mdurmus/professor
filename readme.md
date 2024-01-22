@@ -59,6 +59,18 @@ You can acess live application here: [Professor](https://mdurmus.github.io/profe
 
 - To be honoured as I increase my knowledge and to invite my friends by sharing it on social media
 
+## Design
+
+### Colors
+
+The color palette of the application primarily revolves around shades of blue and white. Various tones of blue are employed to create a cohesive visual experience. The use of a dark grey font ensures excellent legibility, offering a strong contrast against the light blue and white backgrounds. This thoughtful color combination enhances the overall readability and aesthetics of the interface.
+
+### Fonts
+Inter is a modern, clean, and readable sans-serif font family. It offers a broad range of characters and style variations, providing versatility in usage. Designed specifically for web applications and other digital platforms, Inter is commonly preferred in such projects. Offering good readability and aesthetics, Inter can assist in achieving a professional and contemporary appearance.
+
+## Wireframes
+
+
 
 
 **How to Play:**
