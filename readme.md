@@ -203,16 +203,48 @@ HTML and CSS cannot store data within pages due to their structure. However, I w
 **CSS and variable**
 With CSS, instead of writing our color choices every time, we can set them once in the variables and then use this value over and over again wherever we want. You can access the related document from the link: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 
+## Deployment
 
+The project was deployed using GitHub pages. The steps to deploy using GitHub pages are:
 
+ - Go to the repository on GitHub.com
+ - Select 'Settings' near the top of the page.
+ - Select 'Pages' from the menu bar on the left of the page.
+ - Under 'Source' select the 'Branch' dropdown menu and select the main branch.
+ - Once selected, click the 'Save'.
+ - Deployment should be confirmed by a message on a green background saying "Your site is published at" followed by the web address.
 
-Favicons generated from https://realfavicongenerator.net/
+The live link can be found here - [Professor](https://mdurmus.github.io/professor)
 
-css variable function from w3school : https://www.w3schools.com/css/css3_variables.asp
+## Technologies Used
 
-session storage document : https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage
+### Languages
+
+- HTML
+- CSS
+- Javascript
+
+### Framework - Libraries - Programs Used
+
+[W3C](https://www.w3.org/) - Used for HTML & CSS Validation.
+[TinyPNG](https://tinypng.com/) - Used to compress images to reduce file size without a reduction in quality.
+[Balsamiq](https://balsamiq.com/) - Used to generate Wireframe images.
+[Font Awesome](https://fontawesome.com/) - I used Fontawesome's icons in many parts of the app.
+[Google Fonts](https://fonts.google.com/) - Used to import and alter fonts on the page.
+[Chrome Dev Tools](https://developer.chrome.com/docs/devtools?hl=en) - Used for overall development and tweaking, including testing responsiveness and performance.
+[Responsinator](http://www.responsinator.com/) - Used to verify responsiveness of website on different devices.
+[Am I Responsive](https://ui.dev/amiresponsive) - Used to verify responsiveness of website on different devices.
+[GitHub](https://github.com/) - Used for version control and hosting.
+[Favicons](https://realfavicongenerator.net/) - I used Favicon generator for favicons.
+
+### Resources Used
+
+I used [ChatGTP](https://www.chatgpt.com) for question generation and Javascript serialization. 
+While preparing this document, I benefited from the guidance of the user [AliOKeeffe](https://github.com/AliOKeeffe/mindyoga/tree/main?tab=readme-ov-file).
+
+## Acknowledgments
+
+I thank Mentor for his valuable contributions to Mr. Antonio.
+
 
 Questions created by ChatGPT.
-
-Kullanici bilgisini json'a cevirip alamadim. bundan dolayi bilgileri session'a nesne olarak degil key value olarak ekledim.
-kaynak: https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage
