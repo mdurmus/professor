@@ -763,21 +763,34 @@ function StartNewGame() {
  */
 function GetQuestionsFromBank() {
 
-    let selectedIndex = [];
-    let selectedQuestions = [];
+    // This is my solution like stone age :D 15 lines
+    // let selectedIndex = [];
+    // let selectedQuestions = [];
 
-    //I need ten quetions
-    while (selectedQuestions.length < 10) {
-        //Generate ten questions
-        let randomIndex = Math.floor(Math.random() * 30);
-        //Check this index already saved
-        if (!selectedIndex.includes(randomIndex)) {
-            //Set index number
-            selectedIndex.push(randomIndex);
-            // Get question
-            selectedQuestions.push(questionBank[randomIndex]);
-        }
+    // //I need ten quetions
+    // while (selectedQuestions.length < 10) {
+    //     //Generate ten questions
+    //     let randomIndex = Math.floor(Math.random() * 30);
+    //     //Check this index already saved
+    //     if (!selectedIndex.includes(randomIndex)) {
+    //         //Set index number
+    //         selectedIndex.push(randomIndex);
+    //         // Get question
+    //         selectedQuestions.push(questionBank[randomIndex]);
+    //     }
+    // }
+    // //Fill question array
+    // questions = selectedQuestions;
+
+
+    // This is Fisher  Fisher-Yates Sorting Algorithm 
+    //https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
+    // Only five lines, my god....
+    for (let i = questionBank.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [questionBank[i], questionBank[j]] = [questionBank[j], questionBank[i]];
     }
-    //Fill question array
-    questions = selectedQuestions;
+
+    // Take the first 10 selected questions
+    questions = questionBank.slice(0, 10);
 }
