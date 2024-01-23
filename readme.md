@@ -204,9 +204,11 @@ No errors were returned when passing through the Jshint.com
 The questions must stop with 0 in the countdown with the timer. However, if you do not use the clearInterval method, the timer object will not stop. As mentioned in https://developer.mozilla.org/en-US/docs/Web/API/clearInterval, you need to clear the timer using the clearInterval method.
 
 **Store User Information**
+
 HTML and CSS cannot store data within pages due to their structure. However, I was able to store user information using Javascript's Sessionstorage feature. You can access the related document here. https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage
 
 **CSS and variable**
+
 With CSS, instead of writing our color choices every time, we can set them once in the variables and then use this value over and over again wherever we want. You can access the related document from the link: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 
 ## Deployment
