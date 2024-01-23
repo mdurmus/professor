@@ -239,8 +239,15 @@ The live link can be found here - [Professor](https://mdurmus.github.io/professo
 
 ### Resources Used
 
-I used [ChatGTP](https://www.chatgpt.com) for question generation and Javascript serialization. 
-While preparing this document, I benefited from the guidance of the user [AliOKeeffe](https://github.com/AliOKeeffe/mindyoga/tree/main?tab=readme-ov-file).
+- Fisher-Yates Sorting Algorithm
+https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
+
+- I used for question generation and Javascript serialization. 
+[ChatGTP](https://www.chatgpt.com)
+
+
+- While preparing this document, I benefited from the guidance of the user
+[AliOKeeffe](https://github.com/AliOKeeffe/mindyoga/tree/main?tab=readme-ov-file).
 
 ## Acknowledgments
 
