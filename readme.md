@@ -232,16 +232,16 @@ The live link can be found here - [Professor](https://mdurmus.github.io/professo
 
 ### Framework - Libraries - Programs Used
 
-[W3C](https://www.w3.org/) - Used for HTML & CSS Validation.
-[TinyPNG](https://tinypng.com/) - Used to compress images to reduce file size without a reduction in quality.
-[Balsamiq](https://balsamiq.com/) - Used to generate Wireframe images.
-[Font Awesome](https://fontawesome.com/) - I used Fontawesome's icons in many parts of the app.
-[Google Fonts](https://fonts.google.com/) - Used to import and alter fonts on the page.
-[Chrome Dev Tools](https://developer.chrome.com/docs/devtools?hl=en) - Used for overall development and tweaking, including testing responsiveness and performance.
-[Responsinator](http://www.responsinator.com/) - Used to verify responsiveness of website on different devices.
-[Am I Responsive](https://ui.dev/amiresponsive) - Used to verify responsiveness of website on different devices.
-[GitHub](https://github.com/) - Used for version control and hosting.
-[Favicons](https://realfavicongenerator.net/) - I used Favicon generator for favicons.
+[W3C](https://www.w3.org/) - Used for HTML & CSS Validation.<br>
+[TinyPNG](https://tinypng.com/) - Used to compress images to reduce file size without a reduction in quality.<br>
+[Balsamiq](https://balsamiq.com/) - Used to generate Wireframe images.<br>
+[Font Awesome](https://fontawesome.com/) - I used Fontawesome's icons in many parts of the app.<br>
+[Google Fonts](https://fonts.google.com/) - Used to import and alter fonts on the page.<br>
+[Chrome Dev Tools](https://developer.chrome.com/docs/devtools?hl=en) - Used for overall development and tweaking, including testing responsiveness and performance.<br>
+[Responsinator](http://www.responsinator.com/) - Used to verify responsiveness of website on different devices.<br>
+[Am I Responsive](https://ui.dev/amiresponsive) - Used to verify responsiveness of website on different devices.<br>
+[GitHub](https://github.com/) - Used for version control and hosting.<br>
+[Favicons](https://realfavicongenerator.net/) - I used Favicon generator for favicons.<br>
 
 ### Resources Used
 
