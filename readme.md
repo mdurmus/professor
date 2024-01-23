@@ -190,6 +190,12 @@ No errors were returned when passing through the Jshint.com
 
      [Am I responsive](https://ui.dev/amiresponsive?url=https://mdurmus.github.io/professor)
 
+### Bugs Identified
+
+ - A problem encountered by some iPhone, iPad users is that, after answering a question, when the next question is displayed, an answer is highlighted as if the user clicked on it without taking any action. However, this issue does not disrupt the game; the highlighted answer seems to mimic the position of the previously selected answer and does not correspond to the correct answer. 
+
+ - Android users do not experience such a problem. Addressing and resolving this issue requires the intervention of developers. Possible causes may include browser incompatibility, platform-specific issues, or an internal state of the application. To rectify the problem, the development team needs to analyze the situation in detail and find an appropriate solution.
+
 
 ### Fixed Bug
 
@@ -248,6 +254,9 @@ https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascr
 
 - While preparing this document, I benefited from the guidance of the user
 [AliOKeeffe](https://github.com/AliOKeeffe/mindyoga/tree/main?tab=readme-ov-file).
+
+- While preparing this document, I benefited from the guidance of the user
+[HGlass07](https://github.com/HGlass07/History-Quiz?tab=readme-ov-file)
 
 ## Acknowledgments
 
